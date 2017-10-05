@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Teacher List</title>
+  </head>
+  <body>
+    <h1>Teacher List</h1>
+    <a href="/">Return to Home</a><br><br>
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Options</th>
+      </thead>
+      <tbody>
+        <%if (data){data.forEach(rows=>{%>
+          <tr>
+            <td><%=rows.id%></td>
+            <td><%=rows.first_name%></td>
+            <td><%=rows.last_name%></td>
+            <td><%=rows.email%></td>
+            <td><%=rows.gender%></td>
+            <td>
+              <a href="/teacher/edit/<%=rows.id%>">Edit</a>
+              <a href="#">|</a>
+              <a onclick="return confirm('Are you sure to delete this data?')" href="/teacher/delete/<%=rows.id%>">Delete</a>
+            </td>
+          </tr>
+        <%})}%>
+      </tbody>
+    </table>
+    <form class="" action="/teacher" method="post">
+      First Name <br>
+      <input type="text" name="first_name" value="" placeholder="first name"><br>
+      Last Name <br>
+      <input type="text" name="last_name" value="" placeholder="last code"> <br>
+      Email <br>
+      <input type="text" name="email" value="" placeholder="email"> <br>
+      Gender <br>
+      <select class="" name="gender">
+        <%if (gender){gender.forEach(rows=>{%>
+          <option value="<%=rows.gender%>"><%=rows.gender%></option>
+        <%})}%>
+      </select><br><br>
+      <button type="submit" name="button">Add Data</button>
+    </form>
+  </body>
+</html>

@@ -15,7 +15,18 @@
         <th>Options</th>
       </thead>
       <tbody>
-
+        <%if (data){data.forEach(rows=>{%>
+          <tr>
+            <td><%=rows.id%></td>
+            <td><%=rows.subject_name%></td>
+            <td><%=rows.subject_code%></td>
+            <td>
+              <a href="/subject/edit/<%=rows.id%>">Edit</a>
+              <a href="#">|</a>
+              <a onclick="return confirm('Are you sure to delete this data?')" href="/subject/delete/<%=rows.id%>">Delete</a>
+            </td>
+          </tr>
+        <%})}%>
       </tbody>
     </table>
     <form class="" action="/subject" method="post">

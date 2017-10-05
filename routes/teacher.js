@@ -1,12 +1,18 @@
 const express = require('express')
 const router = express.Router()
+const modelsTeacher = require('../models/teacher');
 const modelsSubject = require('../models/subject');
 
 router.get('/', function (req, res) {
   // res.send('Hello World')
-  modelsSubject.findAll()
+  modelsTeacher.findAll()
   .then((data)=>{
-    res.render('subject_list',{data:data})
+    modelsSubject.findAll()
+    .then((dataSubject)=>{
+      let gender=[{'gender':'male'},{'gender':'female'}]
+      // res.render('teacher_list',{data:data,dataSubject:dataSubject})
+      res.render('teacher_list',{data:data,gender:gender})
+    })
   })
   .catch((err)=>{
     res.send(err);
@@ -15,9 +21,9 @@ router.get('/', function (req, res) {
 })
 
 router.post('/', function (req, res) {
-  modelsSubject.create(req.body)
+  modelsTeacher.create(req.body)
   .then((data)=>{
-    res.redirect('/subject')
+    res.redirect('/teacher')
   })
   .catch((err)=>{
     res.send(err);
@@ -27,10 +33,10 @@ router.post('/', function (req, res) {
 
 router.get('/edit/:id', function (req, res) {
   // res.send('Hello World')
-  modelsSubject.findById(req.params.id)
+  modelsTeacher.findById(req.params.id)
   .then((data)=>{
-    // res.send(data)
-    res.render('subject_edit',{data:data})
+    let gender=[{'gender':'male'},{'gender':'female'}]
+    res.render('teacher_edit',{data:data,gender:gender})
   })
   .catch((err)=>{
     res.send(err);
@@ -38,9 +44,9 @@ router.get('/edit/:id', function (req, res) {
 })
 
 router.post('/edit/:id', function (req, res) {
-  modelsSubject.update(req.body,req.params.id)
+  modelsTeacher.update(req.body,req.params.id)
   .then((result)=>{
-    res.redirect('/subject')
+    res.redirect('/teacher')
   })
   .catch((err)=>{
     res.send(err);
@@ -49,9 +55,9 @@ router.post('/edit/:id', function (req, res) {
 })
 
 router.get('/delete/:id', function (req, res) {
-  modelsSubject.destroy(req.params.id)
+  modelsTeacher.destroy(req.params.id)
   .then((result)=>{
-    res.redirect('/subject')
+    res.redirect('/teacher')
   })
   .catch((err)=>{
     res.send(err);

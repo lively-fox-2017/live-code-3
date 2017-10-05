@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Schoole Applications</title>
+  </head>
+  <body>
+    <h1>School Applications</h1>
+    <a href="/subject">Return to Subject</a><br><br>
+    <form class="" action="/subject/edit/<%=data.id%>" method="post">
+      Subject Name <br>
+      <input type="text" name="subject_name" value="<%=data.subject_name%>" placeholder="subjec name"><br>
+      Subject Code <br>
+      <input type="text" name="subject_code" value="<%=data.subject_code%>" placeholder="subject code"> <br><br>
+      <button type="submit" name="button">Edit Data</button>
+    </form>
+  </body>
+</html>
