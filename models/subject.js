@@ -110,21 +110,32 @@ class Subject {
           arr_prom.push(Subject.getAllStudent(row));
         })
         Promise.all(arr_prom).then((results)=>{
-
+          resolve(results);
         })
       })
     })
     return promise;
   }
   static getAllStudent(subject) {
-    Subject_Student.findWhere(subject.id, 'Subject_ID').then((rows)=>{
-      var allStudent = rows.map((row)=>{return row.subject_id});
-      allStudent.forEach((student)=>{
-        Student.findById(student).then((data)=>{
-          console.log(data);
+    var promise = new Promise((resolve, reject)=>{
+      subject['student'] = "";
+      Subject_Student.findWhere(subject.id, 'Subject_ID').then((rows)=>{
+        var allStudent = rows.map((row)=>{return row.subject_id});
+        var student_arr = [];
+        allStudent.forEach((student)=>{
+          student_arr.push(student);
+        })
+        Promise.all(student_arr).then((student)=>{
+          Student.findById(student).then((data)=>{
+            if(data !== undefined) {
+              subject['student'] += data.fullName() + ", ";
+            }
+            resolve(subject);
+          })
         })
       })
     })
+    return promise;
   }
 }
 

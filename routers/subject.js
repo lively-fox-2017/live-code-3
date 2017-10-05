@@ -17,8 +17,17 @@ router.get('/list', function(req, res){
   //   }
   //   res.render('subject', {dataRows:dataRows, message:message});
   // })
-  Subject.generateSubjectTable().then(()=>{
-    
+  Subject.generateSubjectTable().then((dataRows)=>{
+    var message = ""
+     if(req.query.message){
+       if(req.query.message.toLowerCase().indexOf('unique') > -1){
+         message+='Subject Code already used';
+       }
+       else{
+         message+=req.query.message
+       }
+     }
+    res.render('subject', {dataRows:dataRows, message: message});
   }).catch((err)=>{
     console.log(err);
   })

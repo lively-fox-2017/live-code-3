@@ -4,7 +4,16 @@ const Student = require('../models/student.js')
 
 router.get('/list', function(req, res){
   Student.findAll().then((dataRows)=>{
-    res.render('student', {dataRows:dataRows, message:""+req.query.message});
+    var message = ""
+     if(req.query.message){
+       if(req.query.message.toLowerCase().indexOf('unique') > -1){
+         message+='Subject Code already used';
+       }
+       else{
+         message+=req.query.message
+       }
+     }
+    res.render('student', {dataRows:dataRows, message:message});
   })
 })
 
@@ -42,6 +51,14 @@ router.get('/delete/:id', function(req, res){
     res.redirect('../list?message=success');
   }).catch((err)=>{
     res.redirect('../list?message='+err);
+  })
+})
+
+router.get('/subject/:id', function(req, res){
+  Student.generateAssign(req.param('id')).then((dataRows)=>{
+    res.render('student_subject', {dataRows:dataRows});
+  }).catch((err)=>{
+    console.log(err);
   })
 })
 

@@ -14,7 +14,7 @@
         <td>Last Name</td>
         <td>Email</td>
         <td>Gender</td>
-        <td colspan='2'>Action</td>
+        <td colspan='3'>Action</td>
       </tr>
       <%
         for(var i = 0;i<dataRows.length;i++) {
@@ -27,6 +27,7 @@
             <td><%= dataRows[i].gender %></td>
             <td><a href="/student/update/<%= dataRows[i].id %>">Edit</a></td>
             <td><a href="/student/delete/<%= dataRows[i].id %>">Delete</a></td>
+            <td><a href="/student/subject/<%= dataRows[i].id %>">Subject Assigned</a></td>
           </tr>
           <%
         }

@@ -1,5 +1,7 @@
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('./data.db');
+const Subject = require('./subject.js');
+const Subject_Student = require('./subject_student.js');
 
 class Student {
   constructor(raw) {
@@ -105,6 +107,35 @@ class Student {
     })
     return promise;
   } //must to have
+
+  static generateAssign(id) {
+    var promise = new Promise((resolve, reject)=>{
+      Student.findById(id).then((rows)=>{
+        Promise.all([Student.getAllSubject(rows)]).then((results)=>{
+          // resolve(results);
+        })
+      })
+    })
+    return promise;
+  }
+  static getAllSubject(data){
+    var promise = new Promise((resolve, reject)=>{
+      data['subject'] = "";
+      Subject_Student.findWhere(data.id, 'Student_ID').then((rows)=>{
+        var allSubject = rows.map((row)=>{return row.subject_id});
+        var student_arr = [];
+        allSubject.forEach((student)=>{
+          student_arr.push(student);
+        })
+        Promise.all(student_arr).then((tes)=>{
+          Subject.findById(tes).then((hasil)=>{
+            //almost
+          })
+        })
+      })
+    })
+    return promise;
+  }
 }
 
 module.exports = Student;
