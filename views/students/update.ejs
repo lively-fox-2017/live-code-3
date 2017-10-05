@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ORM Mini</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Edit a Student</h1>
+
+  <form action="/students/update/<%= student.id %>" method="POST">
+    First Name: <br>
+    <input type="text" name="first_name" autocomplete="off" value="<%= student.first_name %>" required autofocus>
+    <br>
+    <br>
+    Last Name: <br>
+    <input type="text" name="last_name" autocomplete="off" value="<%= student.last_name %>" required>
+    <br>
+    <br>
+    Email: <br>
+    <input type="email" name="email" autocomplete="off" value="<%= student.email %>" required>
+    <br>
+    <br>
+    Gender: <br>
+    <select name="gender">
+      <option value="Male" <%= (student.gender === 'Male') ? 'selected' : '' %> >Male</option>
+      <option value="Female" <%= (student.gender === 'Female') ? 'selected' : '' %> >Female</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
