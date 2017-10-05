@@ -1,0 +1,21 @@
+<html>
+        <head>
+        </head>
+        <body>
+            <form action="/student/update/<%=data[0].id%>"  method="POST">
+                First name:<br>
+                <input type="text" name="first_name" value="<%=data[0].first_name%>"><br>
+                Last name:<br>
+                <input type="text" name="last_name" value="<%=data[0].last_name%>"><br>
+                Email name:<br>
+                <input type="email" name="email" value="<%=data[0].email%>"><br>
+                Gender:<br>
+                <select name="gender">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                </select>
+                <input type='submit' value='SUBMIT'>
+            </form>
+            <a href ='/subject/add'>Test</a>
+        </body>
+    </html>

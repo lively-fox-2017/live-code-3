@@ -1,0 +1,15 @@
+<html>
+        <head>
+        </head>
+        <body>
+            <form action="/subject/assign/<%=data[0].id%>"  method="POST">
+                <select name="studentId">
+                    <%students.forEach(student => {%>
+                        <option value="<%=student.id%>"><%=student.first_name%></option>
+                    <%})%>
+                </select>
+                <input type='submit' value='SUBMIT'>
+            </form>
+            <a href ='/subject'>Back to subjects</a>
+        </body>
+    </html>

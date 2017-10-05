@@ -1,0 +1,21 @@
+<html>
+        <head>
+        </head>
+        <body>
+            <table>
+                <%data.forEach(data => {%>
+                    <tr>
+                        <td><%=data.id%></td>
+                        <td><%=data.first_name%></td>
+                        <td><%=data.last_name%></td>
+                        <td><%=data.gender%></td>
+                        <td><%=data.email%></td>
+                        <td><a href='/student/update/<%=data.id%>'>edit</a></td>
+                        <td><a href='/student/delete/<%=data.id%>'>delete</a></td>
+                    </tr>    
+                    <%})%>
+            </table>
+            <a href ='/student/add'>Add student</a>
+            <a href='/'>Home</a>
+        </body>
+    </html>

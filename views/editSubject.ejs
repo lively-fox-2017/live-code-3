@@ -1,0 +1,14 @@
+<html>
+        <head>
+        </head>
+        <body>
+            <form action="/subject/update/<%=data[0].id%>"  method="POST">
+                Subject name:<br>
+                <input type="text" name="subject_name" value="<%=data[0].subject_name%>"><br>
+                Subject code:<br>
+                <input type="text" name="subject_code" value="<%=data[0].subject_code%>">
+                <input type='submit' value='SUBMIT'>
+            </form>
+            <a href ='/subject'>Back to subjects</a>
+        </body>
+    </html>
