@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ORM Mini</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><%= student.first_name %>'s Subjects</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subject Name</th>
+        <th>Subject Code</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% subjects.forEach((subject) => { %>
+
+          <tr>
+            <td><%= subject.id %></td>
+            <td><%= subject.subject_name %></td>
+            <td><%= subject.subject_code %></td>
+          </tr>
+
+      <% }) %>
+
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <a href="/students/list">Back</a>
+
+</body>
+</html>

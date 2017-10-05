@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ORM Mini</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ORM Mini</h1>
+  <p>
+    <a href="/students/list">Students</a>&nbsp;
+    <a href="/subjects/list">Subjects</a>
+  </p>
+
+  <hr>
+
+  <a href="/subjects/add">Add a Subject</a>
+
+  <br>
+  <br>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subject Name</th>
+        <th>Subject Code</th>
+        <th>Students</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% subjects.forEach((subject) => { %>
+
+          <tr>
+            <td><%= subject.id %></td>
+            <td><%= subject.subject_name %></td>
+            <td><%= subject.subject_code %></td>
+            <td><%= subject.students.join(', ') %></td>
+            <td>
+
+              <a href="/subjects/update/<%= subject.id %>">Update</a>&nbsp;
+              <a href="/subjects/delete/<%= subject.id %>">Delete</a>&nbsp;
+              <a href="/subjects/add-student/<%= subject.id %>">Add Student</a>
+
+            </td>
+          </tr>
+
+      <% }) %>
+
+    </tbody>
+  </table>
+
+</body>
+</html>
