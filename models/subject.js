@@ -24,7 +24,7 @@ class Subject {
   static findById(paramsId) {
     let promiseObj = new Promise(function(resolve, reject) {
       db.get(`SELECT * FROM Subject WHERE id=${paramsId}`, (err, rows) => {
-        let result = new Subject(data)
+        let result = new Subject(rows)
         resolve(result)
       })
     });
@@ -33,11 +33,17 @@ class Subject {
 
   static findWhere() {} //nice to have
 
-  static create() {} //must to have
+  static create(subject_name, subject_code) {
+    db.run(`INSERT INTO Subject (subject_name, subject_code) VALUES ('${subject_name}', '${subject_code}')`)
+  } //must to have
 
-  static update() {} //must to have
+  static update(subject_name, subject_code, id) {
+    db.run(`UPDATE Subject SET subject_name = '${subject_name}', subject_code= '${subject_code}' WHERE id = ${id}`)
+  } //must to have
 
-  static destroy() {} //must to have
+  static destroy(id) {
+    db.run(`DELETE FROM Subject WHERE id='${id}'`)
+  } //must to have
 
 }
 

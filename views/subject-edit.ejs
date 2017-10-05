@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/subject/edit/<%=id%>" method="post">
+      <input type="text" name="subject_name" value="<%=subject.subject_name%>" placeholder="Subject Name"><br>
+      <input type="text" name="subject_code" value="<%=subject.subject_code%>" placeholder="Subject Code"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <a href="/">Home</a>
+  </body>
+</html>

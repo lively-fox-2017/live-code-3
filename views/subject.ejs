@@ -13,24 +13,23 @@
           <th>Subject Name</th>
           <th>Subject Code</th>
         </tr>
+        <%for(var i=0; i<subject.length; i++){%>
         <tr>
-          <%for(var i=0; i<subject.length; i++){%>
             <td><%=subject[i].id%></td>
             <td><%=subject[i].subject_name%></td>
             <td><%=subject[i].subject_code%></td>
             <td><a href="/subject/edit/<%=subject[i].id%>">edit</a>
               <a href="/subject/delete/<%=subject[i].id%>">delete</a></td>
-          <%}%>
         </tr>
+        <%}%>
       </table>
     </table>
     <br>
+    <br>
     <form action="/subject" method="post">
-      <label for="subject_name">Subject Name</label>
-      <input type="text" name="subject_name" value="">
-      <label for="subject_code">Subject Code</label>
-      <input type="text" name="subject_code" value="">
-      <input type="submit" name="" value="">
+      <input type="text" name="subject_name" value="" placeholder="Subject Name"><br>
+      <input type="text" name="subject_code" value="" placeholder="Subject Code"><br>
+      <input type="submit" value="Submit">
     </form>
     <a href="/">Home</a>
   </body>
