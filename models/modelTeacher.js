@@ -27,6 +27,29 @@ class Teacher{
             })
         })
     }
+    static newData(data){
+        return new Promise((resolve, reject)=>{
+            db.run(`insert into teachers(first_name, last_name, email, gender) values('${data.first_name}','${data.last_name}', '${data.email}', '${data.gender}')`, function(err){
+                if(err){
+                   reject(err)
+                }else{
+                    resolve()
+                }
+            })
+        })
+    }
+
+    static deleteData(data){
+        return new Promise((resolve, reject)=>{
+            db.run(`Delete from teachers where id = '${data}'`, function(err){
+                if(err){
+                    reject(err)
+                }else{
+                    resolve()
+                }
+            })
+        })
+    }
 }
 
 module.exports = Teacher;
