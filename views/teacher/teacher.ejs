@@ -13,6 +13,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Gender</th>
+        <th>Options</th>
       </tr>
       <% for(let i=0; i<teacher.length; i++){ %>
         <tr>
@@ -21,6 +22,10 @@
           <td><%= teacher[i].last_name %></td>
           <td><%= teacher[i].email %></td>
           <td><%= teacher[i].gender %></td>
+          <td>
+            <a href="/teacher/edit/<%= teacher[i].id %>">EDIT</a>
+            <a href="/teacher/delete/<%= teacher[i].id %>">DELETE</a>
+          </td>
         </tr>
       <% } %>
     </table>

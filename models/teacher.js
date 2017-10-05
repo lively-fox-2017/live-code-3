@@ -13,20 +13,23 @@ class Teacher {
   static findAll() { //must to have
     return new Promise((resolve, reject) => {
 			db.all('SELECT * FROM teachers', function(err, rows){
-			let teachers = [];
-			rows.forEach((row) => {
-				let teacher = new Teacher(row.id, row.first_name, row.last_name, row.email, row.gender);
-				teachers.push(teacher);
-			});
+  			let teachers = [];
+  			rows.forEach((row) => {
+  				let teacher = new Teacher(row.id, row.first_name, row.last_name, row.email, row.gender);
+  				teachers.push(teacher);
+  			});
 				resolve(teachers);
   			});
 		});
   }
 
   static findById(reqParams) {
-    db.get(`SELECT * FROM teachers WHERE id = ${reqParams}`, function(err, rows){
-      console.log(rows)
-    });
+    return new Promise((resolve, reject) => {
+      db.get(`SELECT * FROM teachers WHERE id = ${reqParams}`, function(err, rows){
+        console.log(rows)
+      });
+      resolve(rows);
+    })
   } //must to have
 
   static findWhere() {} //nice to have
@@ -37,7 +40,9 @@ class Teacher {
 
   static update() {} //must to have
 
-  static destroy() {} //must to have
+  static destroy(reqParams) {
+    db.run(`DELETE FROM teachers WHERE id = ${reqParams}`);
+  } //must to have
 
 }
 
