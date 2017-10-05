@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Halaman List Subject</title>
+  </head>
+  <body>
+    <h1>HALAMAN LIST Subject</h1>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>subject_name</th>
+        <th>subject_code</th>
+      </tr>
+      <%for(var i = 0; i < dataSubject.length; i++) {%>
+      <tr>
+        <td>dataSubject[i].id</td>
+        <td>dataSubject[i].subject_name</td>
+        <td>dataSubject[i].subject_code</td>
+      </tr>
+      <%}%>
+    </table>
+  </body>
+</html>
