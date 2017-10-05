@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>This is great</h1>
+            <p>Welcome to templating using EJS</p>
+
+            <h2>Loop</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>gender</th>
+                </tr>
+                <% temp.forEach((temps) =>{%>
+                <tr>
+                    <td><%= temps.id%></td>
+                    <td><%= temps.firs_name%></td>
+                    <td><%= temps.last_name%></td>
+                    <td><%= temps.email%></td>
+                    <td><%= temps.gender%></td>
+                </tr>
+                <%})%>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

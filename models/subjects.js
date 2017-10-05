@@ -1,5 +1,5 @@
 var sqlite3 = require('sqlite3').verbose()
-var db = new sqlite3.Database('../data.db');
+var db = new sqlite3.Database('./data.db');
 
 class Subjects {
   constructor() {
@@ -12,7 +12,6 @@ class Subjects {
     // return results
     return new Promise((resolve, reject) => {
       db.all('select * from Subjects;', (err, Subjects) =>{
-        console.log(Subjects);
         resolve(Subjects)
       })
     });

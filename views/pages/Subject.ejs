@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>This is great</h1>
+            <p>Welcome to templating using EJS</p>
+
+            <h2>Loop</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Subject Name</th>
+                    <th>Subject Code</th>
+                    <th>Action</th>
+                </tr>
+                <% temp.forEach((temps) =>{%>
+                <tr>
+                    <td><%= temps.id%></td>
+                    <td><%= temps.subject_name%></td>
+                    <td><%= temps.subject_code%></td>
+                    <td>
+                        <a href="/editSubject/<%= temps.id%>">Edit</a>    
+                    </td>
+                </tr>
+                <%})%>
+            </table>
+        </div>
+        <div>
+            <form action="/newSubject" method="POST">
+                <input type="text" placeholder="Subject Name" name="subject_name">
+                <input type="text" placeholder="Subject Code" name="subject_code"> 
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
