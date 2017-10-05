@@ -21,6 +21,17 @@ class Teacher{
 			})
 		})
 	}
+
+	static addTeacher(reqBody){
+		let subject = new Subject(reqBody)
+		let insert = `INSERT INTO Teachers (first_name, last_name, email, gender, id_subject) VALUES ('${subject.subject_name}', '${subject.subject_code}')`
+
+		return new Promise(()=>{
+			db.run(insert, (err)=>{
+
+			})
+		})
+	}
 }
 
 module.exports = Teacher

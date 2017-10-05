@@ -19,5 +19,52 @@ class Subject{
 			})
 		})
 	}
+
+	static addSubject(reqBody){
+		let subject = new Subject(reqBody)
+		let insert = `INSERT INTO Subjects (subject_name, subject_code) VALUES ('${subject.subject_name}', '${subject.subject_code}')`
+
+		return new Promise(()=>{
+			db.run(insert, (err)=>{
+
+			})
+		})
+	}
+
+	static getById(id){
+		return new Promise((resolve)=>{
+			
+			let getById = `SELECT * FROM Subjects WHERE id = ${id}`
+			// console.log(getById)
+			db.all(getById, (err, rows)=>{
+				let subject = rows.map((element)=>{
+					return new Subject(element)
+				})
+				resolve(subject)
+			})
+				
+		})
+	}
+
+	static updateSubject(reqBody, id){
+		let subject = new Subject(reqBody)
+		return new Promise(()=>{
+			let update = `UPDATE Subjects SET subject_name = '${subject.subject_name}', subject_code = '${subject.subject_code}' WHERE id = ${id}`
+				console.log(update)
+			db.run(update, (err)=>{
+
+			})
+		})
+	}
+
+	static deleteSubject(id){
+		return new Promise(()=>{
+			let deleteSub = `DELETE FROM Subjects WHERE id = ${id}` 
+			db.run(deleteSub, (err)=>{
+
+			})
+		})
+	}
 }
 
+module.exports = Subject

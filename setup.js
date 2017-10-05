@@ -15,7 +15,7 @@ function tableSubject(){
 	})
 }
 
-function dataDummy(){
+function dataDummyTeacher(){
 	db.run(`insert into Teachers(first_name, last_name, email, gender) 
 		Values ('wisnu', 'wakwaw', 'teacher@gmail.com', 'male')`, (err)=>{
 
@@ -26,6 +26,18 @@ function dataDummy(){
 		})
 }
 
+function dataDummySubject(){
+	db.run(`insert into Subjects (subject_name, subject_code) 
+		Values ('Matematika', '03')`, (err)=>{
+
+		})
+
+	db.run(`insert into Subjects (subject_name, subject_code) 
+		Values ('IPA', '04')`, (err)=>{
+
+		})
+}
+
 // tableTeacher()
 // tableSubject()
-dataDummy()
+dataDummySubject()
