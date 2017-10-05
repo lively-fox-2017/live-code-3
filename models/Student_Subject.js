@@ -73,6 +73,46 @@ class Student_Subject {
 
   }
 
+  static fetchStudentsAssigned() {
+
+    const fetchStudents = Promise.all([
+      Student.fetchAll(),
+      Subject.fetchAll(),
+      Student_Subject.fetchAll()
+    ]).then((values) => {
+
+      let students = values[0];
+      let subjects = values[1];
+      let studentsSubjects = values[2];
+
+      subjects.forEach((subject) => {
+
+        subject.students = [];
+
+        let subjs = studentsSubjects.filter((studSub) => {
+          return studSub.subject_id === subject.id;
+        });
+
+        subjs.forEach((subj) => {
+
+          let student = students.find((student) => {
+            return student.id === subj.student_id;
+          });
+
+          if (student)
+            subject.students.push(student.first_name + ' ' + student.last_name);
+
+        });
+
+      })
+
+      return subjects;
+
+    });
+
+    return Promise.resolve(fetchStudents);
+  }
+
   static insert(student_id, subject_id) {
 
     const insertStudentSubject = new Promise((resolve, reject) => {

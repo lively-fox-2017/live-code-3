@@ -35,6 +35,7 @@
         <th>ID</th>
         <th>Subject Name</th>
         <th>Subject Code</th>
+        <th>Students</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -46,6 +47,7 @@
             <td><%= subject.id %></td>
             <td><%= subject.subject_name %></td>
             <td><%= subject.subject_code %></td>
+            <td><%= subject.students.join(', ') %></td>
             <td>
 
               <a href="/subjects/update/<%= subject.id %>">Update</a>&nbsp;

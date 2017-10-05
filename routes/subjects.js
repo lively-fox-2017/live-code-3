@@ -7,7 +7,7 @@ const Student_Subject = require('../models/Student_Subject');
 
 router.get('/list', (req, res) => {
 
-  Subject.fetchAll().then((subjects) => {
+  Student_Subject.fetchStudentsAssigned().then((subjects) => {
     res.render('subjects/list', {
       subjects: subjects
     });
