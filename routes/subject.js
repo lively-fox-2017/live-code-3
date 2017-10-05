@@ -15,7 +15,7 @@ router.get('/',(req,res)=>{
   })
 })
 
-router.get('/addsubject',(req,res)=>{
+router.get('/add',(req,res)=>{
   subject.findAll()
   .then(dataSubject=>{
     res.render('addsubject',{dataSubject:dataSubject})
@@ -25,7 +25,7 @@ router.get('/addsubject',(req,res)=>{
   })
 })
 
-router.post('/addsubject',(req,res)=>{
+router.post('/add',(req,res)=>{
   subject.postInsert(req)
   // console.log('sampe ')
     .then(dataSubject=>{

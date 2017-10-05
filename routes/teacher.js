@@ -15,27 +15,46 @@ router.get('/',(req,res)=>{
   })
 })
 
-router.get('/addteacher',(req,res)=>{
-  teacher.findAll()
+router.get('/add',(req,res)=>{
+  teacher.findAll(req)
   .then(dataTeacher=>{
-    res.render('addteacher',{dataTeacher:dataTeacher})
+    res.render('teacher',{dataTeacher:dataTeacher})
   })
   .catch(err=>{
     res.send(err)
   })
 })
 
-router.post('/addteacher',(req,res)=>{
-  teacher.postInsert(req)
-  // console.log('sampe ')
+router.post('/add',(req,res)=>{
+  teacher.create(req)
     .then(dataTeacher=>{
       res.redirect('/teacher')
-      // console.log();
     })
     .catch (err=>{
       res.send(err)
     })
 })
+
+router.get('/add',(req,res)=>{
+  teacher.findById(req)
+  .then(dataTeacher=>{
+    res.render('teacher',{dataTeacher:dataTeacher})
+  })
+  .catch(err=>{
+    res.send(err)
+  })
+})
+
+router.post('/add',(req,res)=>{
+  teacher.update(req)
+    .then(dataTeacher=>{
+      res.redirect('/teacher')
+    })
+    .catch (err=>{
+      res.send(err)
+    })
+})
+
 //
 // router.post('/',req,res)=>{
 //   teacher

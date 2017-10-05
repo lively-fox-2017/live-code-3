@@ -6,6 +6,11 @@
   </head>
   <body>
     <table border="2px">
+      <input type="text" name="first_name" placeholder="First Name"></input>
+      <input type="text" name="last_name" placeholder="Last Name"></input>
+      <input type="text" name="email" placeholder="Email"></input>
+      <input type="text" name="gender" placeholder="Gender"></input>
+      <input type="submit" name="submit" ></input>
       <thead>
         <th>ID</th>
         <th>First Name</th>
@@ -22,10 +27,11 @@
             <td><%=data.last_name%></td>
             <td><%=data.email%></td>
             <td><%=data.gender%></td>
-            <td><a href="/add">Tambah Teacher</a>
-              <a href="/add">Edit Teacher</a>
-              <a href="/add">Delete Teacher</a>
+            <td>
+              <a href="/teacher/edit/:id">Edit Teacher</a>
+              <a href="/teacher/edit/:id">Delete Teacher</a>
             </td>
+
 
         </tr>
         <%})%>
