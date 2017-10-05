@@ -55,6 +55,26 @@ class Subject {
 
 	}
 
+	static findTeacher(id){
+
+		let promise = new Promise(function(resolve, reject){
+
+			let query = `SELECT * FROM Subjects WHERE Subjects.teacher_id = ${id}`
+
+			db.all(query, function(err, rows){
+				if(!err){
+					resolve(rows)
+				}else{
+					reject(err)
+				}
+			})
+
+		})
+
+		return promise
+
+	}
+
 	static findById(id){
 
 		let promise = new Promise(function(resolve, reject){
@@ -110,7 +130,37 @@ class Subject {
 
 			let query = `UPDATE Subjects SET teacher_id = ${param.teacherName}, subject_name = '${param.sn}', subject_code = '${param.sc}' WHERE id = ${id}`
 
+			db.run(query, function(err, rows){
+				if(!err){
+					resolve()
+				}else{
+					reject(err)
+				}
+			})
+
 		})
+
+		return promise
+
+	}
+
+	static delete(id){
+
+		let promise = new Promise(function(resolve, reject){
+
+			let query = `DELETE FROM Subjects WHERE id = ${id}`
+
+			db.run(query, function(err, rows){
+				if(!err){
+					resolve()
+				}else{
+					reject(err)
+				}
+			})
+
+		})
+
+		return promise
 
 	}
 

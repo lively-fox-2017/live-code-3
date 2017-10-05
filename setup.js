@@ -33,5 +33,6 @@ function createTableSubject(){
 
 }
 
-// createTableTeacher()
-// createTableSubject()
+
+createTableTeacher()
+createTableSubject()

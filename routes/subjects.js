@@ -39,7 +39,17 @@ router.get('/edit/:id', function(req, res){
 })
 
 router.post('/edit/:id', function(req, res){
-	
+	Subject.update(req.body, req.params.id)
+	.then(function(){
+		res.redirect('/subjects')
+	})
+})
+
+router.get('/delete/:id', function(req, res){
+	Subject.delete(req.params.id)
+	.then(function(){
+		res.redirect('/subjects')
+	})
 })
 
 // Teacher yang ada di Subject

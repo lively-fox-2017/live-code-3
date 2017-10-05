@@ -9,11 +9,11 @@ app.use(bodyParser.json())
 
 const index = require('./routes/index')
 const teachers = require('./routes/teachers')
-const subjects = require('./routes/subjects')
+// const subjects = require('./routes/subjects')
 
 app.use('/', index)
 app.use('/teachers', teachers)
-app.use('/subjects', subjects)
+// app.use('/subjects', subjects)
 
 app.listen(3000, function(){
 	console.log(`AYO JALAN!`)
