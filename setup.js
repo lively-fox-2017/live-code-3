@@ -68,4 +68,4 @@ let alter_table = `ALTER TABLE Teacher ADD id_Teacher INTEGER REFERENCES Subject
 // 	})
 // }
 
-createTable();
+//createTable();

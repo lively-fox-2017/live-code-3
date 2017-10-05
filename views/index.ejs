@@ -25,26 +25,45 @@
 </head>
 <body>
 
-  <table>
+  <div>
 
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
+    <table>
 
-</table>
+    <tr>
+      <th>ID</th>
+      <th>SUBJECT NAME</th>
+      <th>SUBJECT CODE</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <% for(let dataSubj=0; dataSubj<dataJsonSubject.length; dataSubj++){ %>
+      <td><%= dataJsonSubject[dataSubj].id%></td>
+      <td><%= dataJsonSubject[dataSubj].subject_name%></td>
+      <td><%= dataJsonSubject[dataSubj].subject_code%></td>
+      <td><a style="text-decoration: none;" href='/update/<%= dataJsonSubject[dataSubj].id %>'>Update</a></td>
+      <td><a style="text-decoration: none;" href='/delete/<%= dataJsonSubject[dataSubj].id %>'>Delete</a></td>
+      <%}%>
+    </tr>
 
+
+  </table>
+
+  </div>
+
+  <div style='margin-top:30px;'>
+
+    <form action="/" method="post">
+      Subject Name:<br>
+      <input type="text" name="subjectName" value="">
+      <br>
+      Subject Code:<br>
+      <input type="text" name="subjectCode" value="">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
 
 </body>
 </html>
