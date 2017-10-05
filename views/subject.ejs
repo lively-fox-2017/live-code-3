@@ -9,20 +9,31 @@
     <div id="main-table">
         <table style="width:100%">
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
+                <th>ID</th>
+                <th>Subject Name</th>
+                <th>Subject Code</th>
+                <th colspan="2">Action</th>
             </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td>
-                <td>94</td>
-            </tr>
+            <% dataRow.forEach(function(row){%>
+                <tr>
+                    <td>
+                        <%=row.id %>
+                    </td>
+                    <td>
+                        <%=row.subject %>
+                    </td>
+                    <td>
+                        <%=row.subject_code %>
+                    </td>
+                    <td>
+                        <a href="/subjects/update/<%=row.id%>">Edit</a>
+                    </td>
+                    <td><a href="/subjects/delete/<%=row.id%>">Delete</a></td>
+                    <td>
+                        <a href="/subjects/teachers/<%=row.id%>">Assign Teacher</a>
+                    </td>
+                </tr>
+                <%})%>
         </table>
     </div>
 

@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 const sqlite3 = require('sqlite3').verbose()
 const db = new sqlite3.Database('db/data.db')
+const Subject = require('../models/modelSubject')
+
 
 router.get('/', function (req, res) {
-    res.render('subject')
-    
+    Subject.findAll().then((result)=>{
+        res.render('subject', {dataRow : result})
+    })
 })
 
 router.post('/', function (req, res) {
@@ -26,4 +29,4 @@ router.get('/delete/:id', function (req, res) {
 })
 
 
-module.exports = router
+module.exports = router;
