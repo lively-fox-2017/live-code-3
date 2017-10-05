@@ -40,7 +40,7 @@ router.post('/update/:id', function (req, res) {
 })
 
 router.get('/delete/:id', function (req, res) {
-    Profile.deleteData(req.params.id).then((result) => {
+    Teacher.deleteData(req.params.id).then((result) => {
         res.redirect('../../teachers')
     })
 })
