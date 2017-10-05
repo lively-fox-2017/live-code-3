@@ -3,6 +3,7 @@ var db = new sqlite3.Database('data/data.db');
 
 
 class Teachers{
+  
   // constructor(raw) {
   //   this.attribute1 = raw.attribute1
   //   this.attribute2 = raw.attribute2

@@ -12,34 +12,62 @@ class Subjects{
   //   let results = query.map(m => new Model(m))
   //   return results
   // }
-  static findAll() { //must to have
-    // return new Promise((resolve, rejects)=>{
-      let query = ('SELECT * FROM Subjects', (err, dataSubjects)=>{
+  static findAll(cb) { //must to have
+    return new Promise((resolve, rejects)=>{
+      let query = ('SELECT * FROM Subjects')
+      db.all(query,(err, dataSubjects)=>{
         if(!err){
-          // let results = dataSubjects.map(m => new Subjects(m))
-          console.log(dataSubjects)
-          // resolve(dataSubjects)
+          resolve(dataSubjects)
         } else{
-          // rejects
-          console.log(err)
+          rejects(err)
+          // console.log(err)
         }
       })
-      
-    // })
+    })
   }
 
 
-  static findById() {} //must to have
+  static findById(id) {
+    return new Promise((resolve, rejects)=>{
+      let query=`SELECT * FROM Subjects where id = ${id}`;
+      db.get(query, (err, dataSubject)=>{
+        if(!err){
+          resolve(dataSubject);
+        }
+      })
+    })
+  } //must to have
 
   static findWhere() {} //nice to have
 
-  static create() {
-    let query = ('INSERT')
+  static create(dataSubject) {
+    return new Promise((resolve, rejects)=>{
+      let query = (`INSERT into Subjects(subject_name, subject_code) VALUES ('${dataSubject.subject_name}','${dataSubject.subject_code}')`)
+      db.run(query, (err)=>{
+        if(!err){
+          resolve(null);
+        } else {
+          rejects(err);
+        }
+      })
+    })
+    
   } //must to have
 
-  static update() {} //must to have
+  static update(id, dataSubject) {
+    return new Promise((resolve, rejects)=>{
+      let query = `UPDATE Subjects SET subject_name = ${dataSubject.subject_name}, subject_code = ${dataSubject.subject_code} WHERE id = ${id}`;
+      db.all(query, (err, dataUpdateSubject)=>{
+        if(!err){
+          resolve(dataUpdateSubject);
+        }
+      })
+    })
+  } //must to have
 
-  static destroy() {} //must to have
+  static destroy() {
+
+  } //must to have
 
 }
 

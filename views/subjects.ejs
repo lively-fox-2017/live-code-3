@@ -5,11 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Subjects</title>
+  <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    </style>
 </head>
 <body>
   <h1>Subjects</h1><br/>
   <a href="/">Home</a>
   <a href="teachers">Teacher</a>
   <a href="subjects">Subjects</a>
+
+  <br/><br/>
+  <table style="width:auto;border: 1px solid">
+    <tr>
+      <th>ID</th>
+      <th>Subjects</th> 
+      <th>Subjects Code</th>
+    </tr>
+    <!-- array.forEach(function(element) { -->  
+    <% dataSubjects.forEach((showSubjects)=>{%>
+      <tr>
+        <td><%=showSubjects.id%></td>
+        <td><%=showSubjects.subject_name%></td> 
+        <td><%=showSubjects.subject_code%></td>
+        <td><a href="subjects/update/<%=showSubjects.id%>">Edit</a></td>
+        <td><a href="subjects/delete/<%=showSubjects.id%>">Delete</a></td>
+      </tr>
+    <%}, this);%>
+    
+  </table>
+  <br/><br/>
+  <form action="subjects/add" method="post">
+    Subject Name:<br>
+    <input type="text" name="subject_name">
+    <br>
+    Subject Code:<br>
+    <input type="text" name="subject_code">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form> 
 </body>
 </html>
