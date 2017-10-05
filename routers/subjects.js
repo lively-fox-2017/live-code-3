@@ -29,6 +29,12 @@ router.post('/update/:id', (req , res)=>{
     res.redirect('../../subjects')
   })
 })
-
+router.get('/delete/:id',(req, res)=>{
+  // console.log(req.params.id)
+  Subjects.destroy(req.params.id).then(()=>{
+    // console.log(dataSubject)
+    res.redirect('../../subjects');
+  })
+})
 
 module.exports = router;

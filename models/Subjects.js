@@ -12,7 +12,7 @@ class Subjects{
   //   let results = query.map(m => new Model(m))
   //   return results
   // }
-  static findAll(cb) { //must to have
+  static findAll() { //must to have
     return new Promise((resolve, rejects)=>{
       let query = ('SELECT * FROM Subjects')
       db.all(query,(err, dataSubjects)=>{
@@ -55,18 +55,32 @@ class Subjects{
   } //must to have
 
   static update(id, dataSubject) {
+    console.log('databos',id)
     return new Promise((resolve, rejects)=>{
-      let query = `UPDATE Subjects SET subject_name = ${dataSubject.subject_name}, subject_code = ${dataSubject.subject_code} WHERE id = ${id}`;
+      let query = `UPDATE Subjects SET subject_name = '${dataSubject.subject_name}', subject_code = '${dataSubject.subject_code}' WHERE id = ${id}`;
       db.all(query, (err, dataUpdateSubject)=>{
         if(!err){
-          resolve(dataUpdateSubject);
+          console.log('hasil',dataUpdateSubject)
+          resolve(null);
+        } else{
+          console.log('ERRRR',err)
         }
       })
     })
   } //must to have
 
-  static destroy() {
-
+  static destroy(id) {
+    return new Promise((resolve, rejects)=>{
+      let query = `DELETE FROM Subjects WHERE id = ${id}`;
+      db.all(query,(err, data)=>{
+        if(!err){
+          resolve(null);
+        } else {
+          rejects(err);
+        }
+      })
+    })
+    
   } //must to have
 
 }
