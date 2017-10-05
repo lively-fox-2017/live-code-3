@@ -1,3 +1,6 @@
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database("./livecode.db");
+
 class Subject {
   constructor(id, subject_name, subject_code) {
     this.id = id;
@@ -35,7 +38,9 @@ class Subject {
     });
   }
 
-  static findWhere() {} //nice to have
+  static findWhere() {
+
+  } //nice to have
 
   static create(reqBody) {
     return new Promise((resolve, reject) => {

@@ -8,19 +8,62 @@ class Student {
   }
 
   static findAll() { //must to have
-    let results = models.map(m => new Model(m))
-    return results
+    return new Promise((resolve, reject) => {
+      db.all("select * from Student", (err, rowsStudent) => {
+        if (err) {
+          reject(err);
+        } else {
+          let arrStudent = [];
+          rowsStudent.forEach((rows) => {
+            let objStudent = new Student(rows.id, rows.first_name, rows.last_name, rows.email, rows.gender);
+            arrStudent.push(objStudent);
+          })
+          resolve(arrStudent);
+        }
+      });
+    });
   }
 
-  static findById() {} //must to have
+  static findById(id) { //must to have
+    return new Promise((resolve, reject) => {
+      db.get(`select * from Student where id = "${id}"`, (err, rowsStudentID) => {
+        if (err) {
+          reject(err);
+        } else {
+          let objStudent = new Student(rowsStudentID.id, rowsStudentID.first_name, rowsStudentID.last_name, rowsStudentID.email, rowsStudentID.gender);
+          resolve(objSubject);
+        }
+      })
+    });
+  }
 
-  static findWhere() {} //nice to have
+  static findWhere() {
 
-  static create() {} //must to have
+  } //nice to have
 
-  static update() {} //must to have
+  static create(reqBody) {
+    return new Promise((resolve, reject) => {
+      db.run(`insert into Student (first_name, last_name, email, gender) values ("${reqBody.first_name}", "${reqBody.last_name}", "${reqBody.email}", "${reqBody.gender}")`, () => {
+        resolve();
+      })
+    });
+  } //must to have
 
-  static destroy() {} //must to have
+  static update(reqBody, reqParams) {
+    return new Promise((resolve, reject) => {
+      db.run(`update Student set first_name = "${reqBody.first_name}", last_name = "${reqBody.last_name}", email = "${reqBody.email}", gender = "${reqBody.gender}" where id = ${reqParams}`, () => {
+        resolve();
+      })
+    });
+  } //must to have
+
+  static destroy(id) {
+    return new Promise((resolve, reject) => {
+      db.run(`delete from Student where id = ${id}`, () => {
+        resolve();
+      })
+    });
+  } //must to have
 
 }
 

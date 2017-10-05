@@ -5,6 +5,7 @@ const app = express();
 
 const index = require("./Routers/index");
 const subject = require("./Routers/subject");
+const student = require("./Routers/student");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -12,6 +13,8 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.use("/", index);
+app.use("/", subject);
+app.use("/", student);
 
 app.listen(2500, (err) => {
   if (err) {
