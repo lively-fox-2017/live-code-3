@@ -45,6 +45,24 @@ class Subject {
       })
     })
   }
+  //
+  // static update(){
+  //   return new Promise ((resolve, reject)=>{
+  //     db.all (`UDPATE Subject SET subject_name = '${req.body.subject_name}',
+  //     subject_code =  '${req.body.subject_code}'
+  //     WHERE id = {req.params.id}` (err, subjectRow)=>{
+  //       if(!err){
+  //         resolve(subjectRow)
+  //       }else{
+  //         reject(err)
+  //       }
+  //     })
+  //   })
+  // }
+//
+//   UPDATE table_name
+// SET column1 = value1, column2 = value2, ...
+// WHERE condition;
 
 
 

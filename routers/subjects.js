@@ -29,54 +29,33 @@ router.get('/', function(req, res){
 router.post('/',function(req, res){
   Subject.create(req.body)
   .then((rowSubject)=>{
-    res.redirect('subjects',{err, rowSubject:rowSubject})
+    res.redirect('subjects',{rowSubject:rowSubject})
   })
 })
 
-
-
-
-
-
-
-
-
-  //
-  // static findAll(){
-  //   return new Promise((resolve, reject)=>{
-  //     db.all('SELECT * FROM contacts',(err,row)=>{
-  //       if(!err){
-  //         resolve(row);
-  //       }else{
-  //         reject(err);
-  //       }
-  //     })
-  //   })
-  // }
-  //
-
-
-
-
-
-
-
-
-
-
-
-// router.get('/', function(req,res){
-//   Contact.findAll()
-//   .then((row)=>{
-//     res.render('contacts', {data:row})
+// router.post('/editSubject/:id', function(req, res){
+//   Subject.update(req.body, req.params)
+//   .then((rowSubject)=>{
+//     res.redirect('subjects', {rowSubject:rowSubject})
 //   })
 // })
-//
-// router.get('/', function(req, res){
-//   Contact.findById().then((data)=>{
-//      res.render('editContacts',{data:data})
-//   })
-// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
