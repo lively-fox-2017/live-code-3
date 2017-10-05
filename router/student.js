@@ -11,6 +11,34 @@ var modelStudent = require('../models/student.js')
 router.get('/', function (req, res) {
     modelStudent.findAll()
     .then(data => {
+        // modelSubject.findAll()
+        // .then(data => {
+        //     data.forEach((d,idx)=> {
+        //         var temp = []
+        //         modelSubject.getStudents(d.id)
+        //         .then(result => {
+        //             result.forEach(x => {
+        //                 modelStudent.findById(x.id)
+        //                 .then(students => {
+        //                     // console.log(students)
+        //                     students.forEach(m => {
+        //                         temp.push(m.first_name)
+        //                     })
+        //                     // console.log(d.students, 'Halo')
+        //                     data[idx].students = temp
+        //                     // console.log(data[idx])
+        //                     if(idx >= data.length - 2) {
+        //                         // res.send(data)
+        //                         res.render('subject', {data : data})
+        //                     }
+        //                     console.log(data)
+        //                 })
+        //                 // console.log(temp)
+        //             })
+        //         })     
+                
+        //     })
+        //  })
         res.render('student', {data: data})
     })
 })
