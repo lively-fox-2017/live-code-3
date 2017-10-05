@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Halaman Add Subjects</title>
+    <title>Halaman Add List Teachers</title>
   </head>
   <body>
-    <form action="/subjects/add" method="post">
+    <form action="/subjects/add_list/<%= dataSubjects.id%>" method="post">
       Name:<br>
       <input type="text" name="subject_name" placeholder="subjects name">
       <br>
@@ -13,9 +13,6 @@
       <input type="text" name="subject_code" placeholder="subjects code">
       <br><br>
       <input type="submit" value="Submit">
-      <%if(dataError){ %>
-      <p><%=dataError%></p>
-      <%}%>
 </form>
   </body>
 </html>

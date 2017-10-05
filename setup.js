@@ -40,3 +40,11 @@ function alterUnique() {
   })
 }
 alterUnique()
+
+function alterTabelTeachers() {
+  let query = `ALTER TABLE Teacher ADD COLUMN idSubject INTEGER REFERENCES Subject(id)`
+  db.run(query, function(err) {
+    console.log('Alter Table Teachers Success!');
+  })
+}
+alterTabelTeachers()

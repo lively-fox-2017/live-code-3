@@ -30,14 +30,11 @@ router.post('/add', (req,res)=>{
   .catch(err=>{
   // res.send(err)
   if(err){
-    if(err.code == "SQLITE_CONSTRAINT"){
+    if(err.code === "SQLITE_CONSTRAINT"){
       Subject.findAll()
       .then(subjects=>{
-        Teacher.findAll()
-        .then(teachers=>{
-          res.render('add_subjects', {dataSubjects:subjects, dataTeachers:teachers, dataError:"CODE sudah dipakai"})
-        })
-        })
+      res.render('add_subjects',{dataSubjects:subjects, dataError:"CODE sudah dipakai"})
+      })
       }
     }
   })
@@ -73,4 +70,13 @@ router.post('/edit/:id',(req,res)=>{
   })
 })
 
+router.get('/add_list/:id',(req,res)=>{
+  Subject.findAll()
+  .then(subjects=>{
+    res.render('add_list', {dataSubjects:subjects})
+  })
+  .catch(err=>{
+    res.send(err)
+  })
+})
 module.exports = router

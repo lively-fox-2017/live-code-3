@@ -17,6 +17,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Gender</th>
+        <th>Subject</th>
         <th colspan="3">Action</th>
       </tr>
     </thead>
@@ -28,6 +29,7 @@
           <td><%= row.last_name%></td>
           <td><%= row.email%></td>
           <td><%= row.gender%></td>
+          <td><%= row.name%></td>
           <td><a href="/teachers/edit/<%= row.id%>">Edit</td>
           <td><a href="/teachers/delete/<%= row.id%>">Delete</td>
         </tr>
