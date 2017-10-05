@@ -17,6 +17,4 @@ db.serialize(() => {
 	db.run(`CREATE UNIQUE INDEX unique_student_code ON subjects (subject_code);`, err => {
 		if (err) throw err;
 	});
-
-	db.close();
 });

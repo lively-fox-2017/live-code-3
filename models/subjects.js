@@ -83,6 +83,48 @@ class Subjects {
 			});
 		});
 	}
+
+	static subjectsWithStudents() {
+		const StudentsSubjects = require('./../models/students_subjects');
+		const Students = require('./../models/students');
+		return new Promise((resolve, reject) => {
+
+
+		this.findAll()
+		.then(subjects => {
+			const subjectsWithStudentsId = subjects.map(subject => {
+				return new Promise((resolve, reject) => {
+					StudentsSubjects.findWhere('subjectId', subject.id)
+					.then(studentSubjects => {
+						subject['students'] = students_subjects.reduce((res, val) => {
+							res.push(val.student_id);
+							return res;
+						}, []);
+						resolve(subject);
+					})
+					.catch(err => {
+						if (err) reject(err);
+					});
+					
+				});
+				
+			});
+
+			Promise.all(subjectsWithStudentsId)
+			.then(subjectsWithStudentsId => {
+				resolve(subjectsWithStudentsId);
+			});
+		})
+		.then(subjectsWithStudentsId => {
+			// subjectsWithStudentsId.map(subject => {
+			// });
+		})
+		.catch(err => {
+			if (err) reject(err);
+		});
+
+		});
+	}
 }
 
 module.exports = Subjects;
