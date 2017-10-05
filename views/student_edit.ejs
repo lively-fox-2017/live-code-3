@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>Edit Students</h3>
+<form action="/students/edit/<%-data.id%>" method="post">
+<p>First Name</p>
+<input type="text" name="first_name" value="<%-data.first_name%>">
+<p>Last Name</p>
+<input type="text" name="last_name"  value="<%-data.last_name%>">
+<p>Email</p>
+<input type="text" name="email"  value="<%-data.email%>">
+<p>Gender</p>
+<select name="gender">
+	<option value="<%-data.gender%>"><%-data.gender%></option>
+	<option value="male">male</option>
+	<option value="female">female</option>
+</select>
+<input type="submit" value="EDIT STUDENT">
+</form>
+</body>
+</html>

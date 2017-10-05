@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>Subjects</h3>
+<table>
+	<th>ID</th>
+	<th>Subject Name</th>
+	<th>Subject Code</th>
+	<th>Students</th>
+	<% data.forEach(i => {%>
+	<tr>
+		<td><%-i.id%></td>
+		<td><%-i.subject_name%></td>
+		<td><%-i.subject_code%></td>
+		<td></td>
+		<td><a href="/subjects/add_student/<%-i.id%>">Add Student</a></td>
+		<td><a href="/subjects/edit/<%-i.id%>">Edit</a></td>
+		<td><a href="/subjects/delete/<%-i.id%>">Delete</a></td>
+	</tr>
+	<%})%>
+</table>
+<form action="/subjects" method="post">
+<p>Subject Name</p>
+<input type="text" name="subject_name" placeholder="subject name">
+<p>Subject Code</p>
+<input type="text" name="subject_code" placeholder="subject code">
+<input type="submit" value="ADD SUBJECT">
+</form>
+</body>
+</html>

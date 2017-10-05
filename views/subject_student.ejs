@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>ADD Student on <%-subject.subject_name%></h3>
+<form action="/subjects/add_student/<%-subject.id%>" method="post">
+<p>Subject Name</p>
+<input type="text" name="id_subject" value="<%-subject.subject_name%>">
+<p>Student Name</p>
+<select name="id_student">
+	<% student.forEach(i => {%>
+	<option value="<%-i.id%>"><%-i.first_name%></option>
+	<%})%>
+</select>
+<input type="submit" value="ADD STUDENT">
+</form>
+</body>
+</html>

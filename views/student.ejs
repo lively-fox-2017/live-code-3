@@ -7,7 +7,35 @@
 <h3>Students</h3>
 <table>
 	<th>ID</th>
-	<th>ID</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Email</th>
+	<th>Gender</th>
+	<% data.forEach(i => {%>
+	<tr>
+		<td><%-i.id%></td>
+		<td><%-i.first_name%></td>
+		<td><%-i.last_name%></td>
+		<td><%-i.email%></td>
+		<td><%-i.gender%></td>
+		<td><a href="/students/edit/<%-i.id%>">Edit</a></td>
+		<td><a href="/students/delete/<%-i.id%>">Delete</a></td>
+	</tr>
+	<%})%>
 </table>
+<form action="/students" method="post">
+<p>First Name</p>
+<input type="text" name="first_name" placeholder="first name">
+<p>Last Name</p>
+<input type="text" name="last_name" placeholder="last name">
+<p>Email</p>
+<input type="text" name="email" placeholder="email">
+<p>Gender</p>
+<select name="gender">
+	<option value="male">male</option>
+	<option value="female">female</option>
+</select>
+<input type="submit" value="ADD STUDENT">
+</form>
 </body>
 </html>

@@ -6,7 +6,9 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs');
 let index = require('./routs/index')
 let student = require('./routs/student')
+let subject = require('./routs/subject')
 app.use('/', index)
 app.use('/students', student)
+app.use('/subjects', subject)
 
 app.listen(3000);

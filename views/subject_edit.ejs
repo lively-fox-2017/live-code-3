@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>Subjects Edit</h3>
+<form action="/subjects/edit/<%-data.id%>" method="post">
+<p>Subject Name</p>
+<input type="text" name="subject_name" value="<%-data.subject_name%>">
+<p>Subject Code</p>
+<input type="text" name="subject_code" value="<%-data.subject_code%>">
+<input type="submit" value="EDIT SUBJECT">
+</form>
+</body>
+</html>
