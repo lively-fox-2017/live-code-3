@@ -70,6 +70,18 @@ class Teacher {
       })
     })
   } //must to have
+
+  static assignTeacher(data,id) {
+    return new Promise(function(resolve,reject){
+      db.run(`DELETE FROM Teacher WHERE id=${id}`, function(err,result){
+        if (!err) {
+          resolve(this)
+        } else {
+          reject(err);
+        }
+      })
+    })
+  } //must to have
 }
 
 module.exports = Teacher
