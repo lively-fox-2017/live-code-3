@@ -5,6 +5,34 @@
     <title></title>
   </head>
   <body>
-    <%=%>
+    <table>
+      <tr>
+        <td>first name</td>
+        <td>last_name</td>
+        <td>email</td>
+        <td>gender</td>
+        <td>action</td>
+      </tr>
+      <%for(var student of students){%>
+        <td><%=student.first_name%></td>
+        <td><%=student.last_name%></td>
+        <td><%=student.email%></td>
+        <td><%=student.gender%></td>
+        <td><a href="/student/edit/<%=student.id%>">edit</a>|<a href="/student/delete/<%=student.id%>">delete</a></td>
+      <%}%>
+    </table>
+
+
+    <form action="/student" method="post">
+      first_name :
+      <input type="text" name="first_name">
+      last_name :
+      <input type="text" name="last_name" value="">
+      email :
+      <input type="text" name="email" value="">
+      gender :
+      <input type="text" name="gender" value="">
+      <input type="submit">
+    </form>
   </body>
 </html>

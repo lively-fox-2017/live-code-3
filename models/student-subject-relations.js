@@ -2,23 +2,25 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('sekolah.db');
 
-class Subject {
+class StudentSubjectRelation {
   constructor(raw) {
     this.id = raw.id;
-    this.subject_name = raw.subject_name;
-    this.subject_code = raw.subject_code;
+    this.student_id = raw.student_id;
+    this.subject_id = raw.subject_id;
+    this.score= raw.score;
+
   }
 
   static findAll() { //must to have
     // let results = models.map(m => new Model(m))
     // return results
     let promise = new Promise((resolve, reject)=>{
-      let query = `SELECT * FROM subjects;`;
+      let query = `SELECT * FROM student_subject_relations;`;
       db.all(query, function(err, rows){
         if(err){
           reject(err);
         }else{
-          let result = rows.map((row)=>{return new Subject(row)});
+          let result = rows.map((row)=>{return new StudentSubjectRelation(row)});
           console.log(result);
           resolve(result);
         }
@@ -30,12 +32,12 @@ class Subject {
 
   static findById(id) {
     let promise = new Promise((resolve, reject)=>{
-      let query = `SELECT * FROM subjects WHERE id = '${id}';`;
+      let query = `SELECT * FROM student_subject_relations WHERE id = '${id}';`;
       db.get(query, function(err, row){
         if(err){
           reject(err);
         }else{
-          let result = new Subject(row);
+          let result = new StudentSubjectRelation(row);
           resolve(row)
         }
       })
@@ -45,18 +47,18 @@ class Subject {
 
   static findWhere() {} //nice to have
 
-  static create( subject_name, subject_code) {
+  static create( student_id, subject_id, score) {
     let promise = new Promise ((resolve, reject)=>{
-      let query = `INSERT INTO subjects ( subject_name, subject_code) values( '${subject_name}', '${subject_code}');`;
+      let query = `INSERT INTO student_subject_relations ( student_id, subject_id, score) values( '${student_id}', '${subject_id}'), '${score}';`;
       db.run(query);
       resolve();
     })
     return promise;
   } //must to have
 
-  static update(id, subject_name, subject_code) {
+  static update(id, student_id, subject_id, score) {
     let promise = new Promise((resolve, reject)=>{
-      let query = `UPDATE subjects SET subject_name = '${subject_name}', subject_code = '${subject_code}' WHERE id='${id}';`;
+      let query = `UPDATE student_subject_relations SET student_id = '${student_id}', subject_id = '${subject_id}', score = '${score}' WHERE id='${id}';`;
       db.run(query);
       resolve();
     })
@@ -65,7 +67,7 @@ class Subject {
 
   static destroy(id) {
     let promise = new Promise((resolve, reject)=>{
-      let query = `DELETE FROM subjects WHERE id='${id}';`;
+      let query = `DELETE FROM student_subject_relations WHERE id='${id}';`;
       db.run(query);
       resolve();
     })
@@ -74,4 +76,4 @@ class Subject {
 
 }
 
-module.exports = Subject;
+module.exports = StudentSubjectRelation;

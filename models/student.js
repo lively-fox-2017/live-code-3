@@ -18,7 +18,8 @@ class Student {
         if(err){
           reject(err);
         }else{
-          let result = rows.map((row)=>{new Subject(row)});
+          let result = rows.map((row)=>{return new Student(row)});
+          //console.log(rows);
           resolve(result);
         }
 
@@ -27,14 +28,14 @@ class Student {
     return promise;
   }
 
-  static findById() {
+  static findById(id) {
     let promise = new Promise((resolve, reject)=>{
       let query = `SELECT * FROM students WHERE id = '${id}';`;
       db.get(query, function(err, row){
         if(err){
           reject(err);
         }else{
-          let result = new Subject(row);
+          let result = new Student(row);
           resolve(row)
         }
       })
@@ -46,24 +47,26 @@ class Student {
 
   static create( first_name, last_name, email, gender) {
     let promise = new Promise ((resolve, reject)=>{
-      let query = `INSERT INTO subjects (first_name, last_name, email, gender) values( '${subject_name}', '${subject_code}');`;
+      let query = `INSERT INTO students (first_name, last_name, email, gender) values( '${first_name}', '${last_name}', '${email}', '${gender}');`;
       db.run(query);
       resolve();
     })
     return promise;
   } //must to have
 
-  static update(first_name, last_name, email, gender) {
+  static update(id ,first_name, last_name, email, gender) {
     let promise = new Promise((resolve, reject)=>{
-      let query = `UPDATE subjects SET first_name = '${first_name}', last_name = '${last_name}', email = '${email}', gender = '${gender}' WHERE id='${id}';`;
+      console.log(id);
+      let query = `UPDATE students SET first_name = '${first_name}', last_name = '${last_name}', email = '${email}', gender = '${gender}' WHERE id='${id}';`;
       db.run(query);
       resolve();
     })
     return promise;
   } //must to have
 
-  static destroy() {
+  static destroy(id) {
     let promise = new Promise((resolve, reject)=>{
+      console.log('isad');
       let query = `DELETE FROM students WHERE id='${id}';`;
       db.run(query);
       resolve();
