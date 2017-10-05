@@ -52,7 +52,32 @@ app.get('/teacher/list', (req, res) => {
   })
 })
 
+app.get('/teacher/add', (req, res) => {
+  res.render('teacherAdd')
+})
 
+app.post('/teacher/teacher/add', (req, res) => {
+  db.all(`INSERT INTO Teacher(first_name, last_name, email, gender, id_subject) Values ("${req.body.first_name}", "${req.body.last_name}", "${req.body.email}", "${req.body.gender}", "{req.body.id_subject}")`, (err) => {
+    if(err) {
+      console.log(err);
+    }
+    res.redirect('/teacher/list')
+  })
+})
+
+app.get('/teacher/teacher/delete/:id', (req, res) => {
+  db.all(`DELETE FROM Teacher Where id = "${req.params.id}"`, (err, rows) => {
+    res.redirect('/teacher/list')
+  })
+})
+
+app.get('/teacher/teacher/edit/:id', (req, res) => {
+  db.all(`SELECT * FROM Teacher WHERE id = "${req.params.id}"`, (err, rows) => {
+    res.render('teacherEdit', {dataTeacher: rows})
+  })
+})
+
+app.get('')
 
 app.get('/add')
 

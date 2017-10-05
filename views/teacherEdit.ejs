@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tambah halaman</title>
+  </head>
+  <body>
+    <form action="/teacher/teacher/edit/<%=dataTeacher[0].id%>" method="post">
+      <input type="input" name="first_name" value="<%=dataTeacher[0].first_name%>">
+      <input type="input" name="last_name" value="<%=dataTeacher[0].last_name%>">
+      <input type="input" name="email" value="<%=dataTeacher[0].email%>">
+      <input type="input" name="gender" value="<%=dataTeacher[0].gender%>">
+      <input type="input" name="id_subject" value="<%=dataTeacher[0].id_subject%>">
+      <input type="submit" value="submit" value="">
+    </form>
+  </body>
+</html>

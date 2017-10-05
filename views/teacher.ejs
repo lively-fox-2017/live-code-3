@@ -23,8 +23,8 @@
         <td><%= dataTeacher[i].email%></td>
         <td><%= dataTeacher[i].gender%></td>
         <td><%= dataTeacher[i].id_subject%></td>
-        <td><a href="#">edit</a></td>
-        <td><a href="#">delete</a></td>
+        <td><a href="teacher/edit/<%=dataTeacher[i].id%>">edit</a></td>
+        <td><a href="teacher/delete/<%=dataTeacher[i].id%>">delete</a></td>
       </tr>
       <%}%>
     </table>
