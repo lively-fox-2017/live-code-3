@@ -30,9 +30,22 @@
                     <td><%= temps.last_name%></td>
                     <td><%= temps.email%></td>
                     <td><%= temps.gender%></td>
+                    <td>
+                        <a href="/editStudent/<%= temps.id%>">Edit</a>
+                        <a href="/deleteStudent/<%= temps.id%>">Delete</a>    
+                    </td>
                 </tr>
                 <%})%>
             </table>
+        </div>
+        <div>
+            <form action="/newStudent" method="POST">
+                <input type="text" placeholder="First Name" name="first_name">
+                <input type="text" placeholder="last name Name" name="last_name">
+                <input type="text" placeholder="Email" name="email">
+                <input type="text" placeholder="Gender" name="gender"> 
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </main>
 </body>

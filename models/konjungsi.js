@@ -1,3 +1,6 @@
+var sqlite3 = require('sqlite3').verbose()
+var db = new sqlite3.Database('./data.db');
+
 class Konjungsi {
   constructor() {
     // this.attribute1 = raw.attribute1
@@ -7,7 +10,6 @@ class Konjungsi {
   static findAll() { //must to have
     return new Promise((resolve, reject) => {
       db.all('select * from Konjungsi;', (err, konjungsi) =>{
-        console.log(konjungsi);
         resolve(konjungsi)
       })
     });
@@ -24,3 +26,5 @@ class Konjungsi {
   static destroy() {} //must to have
 
 }
+
+module.exports = Konjungsi

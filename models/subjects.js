@@ -1,5 +1,8 @@
 var sqlite3 = require('sqlite3').verbose()
 var db = new sqlite3.Database('./data.db');
+const Konjungsi = require('../models/konjungsi')
+const Student = require('../models/konjungsi')
+
 
 class Subjects {
   constructor() {
@@ -11,9 +14,34 @@ class Subjects {
     // let results = models.map(m => new Model(m))
     // return results
     return new Promise((resolve, reject) => {
+      
+      //Disini lagi nyoba many to many, cuma kagak ada waktu lagi
+
+      // let allKonjungsi = Konjungsi.findAll()
+      // let allStudent = Student.findAll() 
+      // let allSubject = return new Promise((resolve, reject) => {
+      //     db.all('select * from Subjects;', (err, Subjects) =>{
+      //       resolve(Subjects)
+      //     })  
+      // });
+      
+
+      // Promise.all([allSubject, allKonjungsi, allStudent]).then(values =>{
+      //   console.log('sini')
+      //   console.log(values)
+      //   // values[0].forEach((sub) =>{
+      //   //   sub.id_student = []
+
+      //   // })
+      //   resolve(values)
+      // })
+
+
       db.all('select * from Subjects;', (err, Subjects) =>{
         resolve(Subjects)
       })
+
+
     });
 
   }

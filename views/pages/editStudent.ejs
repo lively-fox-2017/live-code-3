@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>This is great</h1>
+            <p>Welcome to templating using EJS</p>
+
+            <h2>Loop</h2>
+        </div>
+        <div>
+            <form action="/editStudentFinal" method="POST">
+                <input type="text" value=<%= temp.id%> name="student_id">
+                <input type="text" value=<%= temp.firs_name%> name="first_name">
+                <input type="text" value=<%= temp.last_name%> name="last_name">
+                <input type="text" value=<%= temp.email%> name="email">
+                <input type="text" value=<%= temp.gender%> name="gender"> 
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
