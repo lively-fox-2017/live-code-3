@@ -15,7 +15,7 @@ router.get('/', function(req,res) {
 router.get('/add', function(req,res) {
   Subject.findAll()
   .then(dataSubject => {
-    res.render('subjects/add', {dataSubject: dataSubject})
+    res.render('subjects/add', {dataSubject: dataSubject, errCode: null})
   })
   .catch(err => {
     res.send(err)
@@ -28,7 +28,15 @@ router.post('/add', function(req,res) {
     res.redirect('/subjects')
   })
   .catch(err => {
-    res.send(err)
+    // res.send(err)
+    if (err) {
+      if (err.code == 'SQLITE_CONSTRAINT') {
+        Subject.findAll()
+        .then(dataSubject => {
+          res.render('subjects/add', {dataSubject: dataSubject, errCode: 'SUBJECT CODE SUDAH ADA YANG PAKAI'})
+        })
+      }
+    }
   })
 })
 
@@ -45,7 +53,7 @@ router.get('/delete/:id', function(req,res) {
 router.get('/edit/:id', function(req,res) {
   Subject.findById(req)
   .then(dataSubject => {
-    res.render('subjects/edit', {dataSubject: dataSubject[0]})
+    res.render('subjects/edit', {dataSubject: dataSubject[0], errCode: null})
   })
   .catch(err => {
     res.send(err)
@@ -58,7 +66,14 @@ router.post('/edit/:id', function(req,res) {
     res.redirect('/subjects')
   })
   .catch(err => {
-    res.send(err)
+    if (err) {
+      if (err.code == 'SQLITE_CONSTRAINT') {
+        Subject.findAll()
+        .then(dataSubject => {
+          res.render('subjects/add', {dataSubject: dataSubject[0], errCode: 'SUBJECT CODE SUDAH ADA YANG PAKAI'})
+        })
+      }
+    }
   })
 })
 

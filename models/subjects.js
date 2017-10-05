@@ -33,8 +33,8 @@ class Subject {
 
   static createSubject(req) {
     let promise = new Promise(function(resolve,reject) {
-      db.run(`INSERT INTO Subjects (subject_name,subject_code)
-      VALUES ('${req.body.subject_name}','${req.body.subject_code}' )`, (err,dataSubject) => {
+      db.run(`INSERT INTO Subjects (subject_name,subject_code,id_teacher)
+      VALUES ('${req.body.subject_name}','${req.body.subject_code}','${req.body.id_teacher}' )`, (err,dataSubject) => {
         if (!err) {
           resolve(dataSubject)
         } else {
@@ -60,7 +60,7 @@ class Subject {
 
   static updateSubject(req) {
     let promise = new Promise(function(resolve,reject) {
-      db.run(`UPDATE Subjects SET subject_name = '${req.body.subject_name}', subject_code = '${req.body.subject_code}'
+      db.run(`UPDATE Subjects SET subject_name = '${req.body.subject_name}', subject_code = '${req.body.subject_code}', id_teacher = '${req.body.id_teacher}'
        WHERE id = ${req.params.id}`, (err,dataSubject) => {
         if (!err) {
           resolve(dataSubject)

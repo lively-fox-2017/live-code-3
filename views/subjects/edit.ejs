@@ -6,10 +6,14 @@
   </head>
   <body>
     <h1>Ini Adalah Halaman Edit Subject</h1>
+    <% if (errCode) { %>
+      <p> <%= errCode %> </p>
+    <% } %>
   </body>
   <form class="" action="/subjects/edit/<%= dataSubject.id %>" method="post">
-    <input type="text" name="subject_name" value="<%= dataSubject.subject_name %>">
-    <input type="text" name="subject_code" value="<%= dataSubject.subject_code %>">
+    <input type="text" name="subject_name" value="<%= dataSubject.subject_name %>" required>
+    <input type="text" name="subject_code" value="<%= dataSubject.subject_code %>" required>
+    <input type="text" name="id_teacher" value="<%= dataSubject.id_teacher %>" required>
     <input type="submit" value="SUBMIT">
   </form>
 </html>

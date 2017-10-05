@@ -16,11 +16,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // SET VARIABEL CALLING ROUTING
 const index = require('./routes/index.js')
 const subjects = require('./routes/subjects.js')
-// const teachers = require('./routes/teachers.js')
+const teachers = require('./routes/teachers.js')
 
 app.use('/', index)
 app.use('/subjects', subjects)
-// app.use('/teachers', teachers)
+app.use('/teachers', teachers)
 
 
 // SET PORT USING 3000!

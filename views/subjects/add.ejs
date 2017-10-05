@@ -6,10 +6,14 @@
   </head>
   <body>
     <h1>Ini Adalah Halaman Add Subject</h1>
+    <% if (errCode) { %>
+      <p> <%= errCode %> </p>
+    <% } %>
   </body>
   <form class="" action="/subjects/add" method="post">
-    <input type="text" name="subject_name" placeholder="Input Nama Subject Disini">
-    <input type="text" name="subject_code" placeholder="Input Code Disini">
+    <input type="text" name="subject_name" placeholder="Input Nama Subject Disini" required>
+    <input type="text" name="subject_code" placeholder="Input Code Disini" required>
+    <input type="text" name="id_teacher" placeholder="Input Teacher Disini" required>
     <input type="submit" value="SUBMIT">
   </form>
 </html>
