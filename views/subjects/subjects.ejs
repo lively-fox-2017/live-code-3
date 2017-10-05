@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Halaman Contact</title>
+  </head>
+  <body>
+    <table border="1px solid black">
+      <thead>
+        <th>ID</th>
+        <th>SUBECT NAME</th>
+        <th>SUBJECT CODE</th>
+        <th colspan="3">STATUS</th>
+      </thead>
+      <tbody>
+        <% dataSubject.forEach(rows => { %>
+          <tr>
+            <td><%= rows.id %></td>
+            <td><%= rows.subject_name %></td>
+            <td><%= rows.subject_code %></td>
+            <td><a href="/subjects/add">ADD SUBJECT</a></td>
+            <td><a href="/subjects/edit/<%= rows.id %>">EDIT</a></td>
+            <td><a href="/subjects/delete/<%= rows.id %>">HAPUS</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
