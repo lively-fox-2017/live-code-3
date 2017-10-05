@@ -49,6 +49,7 @@ class Student {
     let promise = new Promise((resolve, reject)=>{
       StudentSubjectRelations.findWhere('student_id', student_id).then((rows)=>{
         
+        resolve()
       })
     })
     return promise;
