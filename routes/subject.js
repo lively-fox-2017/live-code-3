@@ -7,16 +7,24 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const subject = require('../models/subject')
 
-route.get('/', function (req, res) {
+function errRenHandle(res, req, errMsg){
   subject.findAll().then((rows)=>{
-    res.render('subject', {subject:rows})
+    res.render('subject', {subject:rows, alert:errMsg})
   })
+}
+
+route.get('/', function (req, res) {
+  errRenHandle(res, req, '')
 })
 
 route.post('/', urlencodedParser, function (req, res) {
   console.log(req.body);
-  subject.create(req.body.subject_name, req.body.subject_code)
-  res.redirect('/subject')
+  subject.create(req.body.subject_name, req.body.subject_code, (err)=>{
+    if(err){
+      errRenHandle(res, req, 'Subject Code already used')
+    }
+    res.redirect('/subject')
+  })
 });
 
 route.get('/edit/:id', function (req, res) {
@@ -33,7 +41,6 @@ route.post('/edit/:id', urlencodedParser, function (req, res) {
 route.get('/delete/:id', function (req, res) {
   subject.destroy(req.params.id)
   res.redirect('/subject')
-  console.log(req.params.id);
 })
 
 module.exports = route;

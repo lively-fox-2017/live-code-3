@@ -33,8 +33,10 @@ class Subject {
 
   static findWhere() {} //nice to have
 
-  static create(subject_name, subject_code) {
-    db.run(`INSERT INTO Subject (subject_name, subject_code) VALUES ('${subject_name}', '${subject_code}')`)
+  static create(subject_name, subject_code, cb) {
+    db.run(`INSERT INTO Subject (subject_name, subject_code) VALUES ('${subject_name}', '${subject_code}')`, (err)=>{
+      cb(err)
+    })
   } //must to have
 
   static update(subject_name, subject_code, id) {

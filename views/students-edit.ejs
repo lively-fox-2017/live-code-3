@@ -6,13 +6,17 @@
   </head>
   <body>
     <form action="/students/edit/<%=id%>" method="post">
-      <input type="text" name="first_name" placeholder="First Name"><br>
-      <input type="text" name="last_name" placeholder="Last Name"><br>
-      <input type="text" name="email" placeholder="email"><br>
+      <input type="text" name="first_name" placeholder="First Name" value="<%=students.first_name%>"><br>
+      <input type="text" name="last_name" placeholder="Last Name" value="<%=students.last_name%>"><br>
+      <input type="text" name="email" placeholder="email" value="<%=students.email%>"><br>
       <select name="gender">
-        <option value="">select gender</option>
-        <option value="male">male</option>
-        <option value="female">female</option>
+        <%if(students.gender == 'male'){%>
+          <option value="male">male</option>
+          <option value="female">female</option>
+        <%}else{%>
+          <option value="female">female</option>
+          <option value="male">male</option>
+        <%}%>
       </select><br>
       <input type="submit" value="Submit">
     </form>

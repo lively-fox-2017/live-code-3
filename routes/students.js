@@ -9,14 +9,13 @@ const students = require('../models/students')
 
 route.get('/', function (req, res) {
   students.findAll().then((rows)=>{
-    console.log(rows);
     res.render('students', {students:rows})
   })
 })
 
 route.post('/', urlencodedParser, function (req, res) {
   students.create(req.body.first_name, req.body.last_name, req.body.email, req.body.gender)
-  req.redirect('/students')
+  res.redirect('/students')
 })
 
 route.get('/edit/:id', function (req, res) {
@@ -25,16 +24,15 @@ route.get('/edit/:id', function (req, res) {
   })
 })
 
-// route.post('/edit/:id', urlencodedParser, function (req, res) {
-//   subject.update(req.body.subject_name, req.body.subject_code, req.params.id)
-//   res.redirect('/subject')
-// })
-//
-// route.get('/delete/:id', function (req, res) {
-//   subject.destroy(req.params.id)
-//   res.redirect('/subject')
-//   console.log(req.params.id);
-// })
+route.post('/edit/:id', urlencodedParser, function (req, res) {
+  students.update(req.body.first_name, req.body.last_name, req.body.email, req.body.gender, req.params.id)
+  res.redirect('/students')
+})
+
+route.get('/delete/:id', function (req, res) {
+  students.destroy(req.params.id)
+  res.redirect('/students')
+})
 
 
 module.exports = route;

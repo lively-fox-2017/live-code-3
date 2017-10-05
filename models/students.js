@@ -39,8 +39,8 @@ class Students {
     db.run(`INSERT INTO Students (first_name, last_name, email, gender) VALUES ('${first_name}', '${last_name}', '${email}', '${gender}')`)
   } //must to have
 
-  static update(subject_name, subject_code, id) {
-    db.run(`UPDATE Students SET subject_name = '${subject_name}', subject_code= '${subject_code}' WHERE id = ${id}`)
+  static update(first_name, last_name, email, gender, id) {
+    db.run(`UPDATE Students SET first_name='${first_name}', last_name='${last_name}', email='${email}', gender='${gender}' WHERE id = ${id}`)
   } //must to have
 
   static destroy(id) {

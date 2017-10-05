@@ -2,7 +2,7 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./database/database.db');
 
 function tableSubject(){
-  db.run('CREATE TABLE Subject (id INTEGER PRIMARY KEY AUTOINCREMENT, subject_name TEXT, subject_code TEXT)', (err) => {
+  db.run('CREATE TABLE Subject (id INTEGER PRIMARY KEY AUTOINCREMENT, subject_name TEXT, subject_code INTEGER)', (err) => {
     if(!err){
       console.log('table subject created');
     }
@@ -25,5 +25,15 @@ function tableConjunction(){
   })
 }
 
+function alterUnique(){
+  db.run('create unique index unique_name on Subject(subject_code)', (err) => {
+    if(!err){
+      console.log('unique created');
+    }
+  })
+}
+
+
+
 // tableSubject()
-tableConjunction()
+alterUnique()
