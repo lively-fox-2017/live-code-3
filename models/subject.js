@@ -13,8 +13,31 @@ class Subject {
       let selectQuery = 'SELECT * FROM subjects';
       db.all(selectQuery, (err, rowsSubject) => {
         if (!err) {
-          let result = rowsSubject.map((rowsSubject, index) => {
-            return new Subject(rowsSubject);
+          let result = rowsSubject.map((rowSubject, index) => {
+            return new Subject(rowSubject);
+          })
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      })
+    });
+  }
+
+  static findByIds(ids) {
+    return new Promise((resolve, reject) => {
+      let selectQuery = 'SELECT * FROM subjects WHERE id IN (';
+      ids.forEach((id, index) => {
+        if (index === ids.length - 1)
+          selectQuery += parseInt(id);
+        else
+          selectQuery += parseInt(id) + ', ';
+      });
+      selectQuery += ')';
+      db.all(selectQuery, (err, rowsSubject) => {
+        if (!err) {
+          let result = rowsSubject.map((rowSubject, index) => {
+            return new Subject(rowSubject);
           })
           resolve(result);
         } else {

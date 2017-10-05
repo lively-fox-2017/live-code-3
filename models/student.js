@@ -1,5 +1,7 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./data.db');
+const StudentSubject = require('./studentSubject');
+const Subject = require('./subject');
 
 class Student {
   constructor(raw) {
@@ -8,6 +10,7 @@ class Student {
     this.last_name = raw.last_name;
     this.email = raw.email;
     this.gender = raw.gender;
+    this.subjects = (raw.hasOwnProperty('subjects')) ? raw.subjects : '';
   }
 
   static findAll() { //must to have
@@ -23,6 +26,48 @@ class Student {
           reject(err);
         }
       })
+    });
+  }
+
+  static findAllWithSubject() {
+    return new Promise((resolve, reject) => {
+      this.findAll()
+        .then((students) => {
+          students.forEach((student, index) => {
+            StudentSubject.findByStudentId(student.id)
+              .then((studentsubjects) => {
+                if (studentsubjects) {
+                  let subjectsId = studentsubjects.map((studentsubject) => {
+                    return studentsubject.id_subject;
+                  })
+                  return subjectsId;
+                } else
+                  return null;
+              })
+              .then(subjectsId => {
+                if (subjectsId) {
+                  Subject.findByIds(subjectsId)
+                    .then(subjects => {
+                      student.subjects = subjects;
+                      if (index >= students.length - 1)
+                        console.log(require('util').inspect(students, {
+                          depth: null
+                        }));
+                    })
+                    .catch(reason => {
+                      console.log(reason);
+                    })
+                } else
+                  student.subjects = [];
+              })
+              .catch(reason => {
+                console.log(reason);
+              })
+          });
+        })
+        .catch(reason => {
+          console.log(reason);
+        })
     });
   }
 

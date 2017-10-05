@@ -2,7 +2,7 @@ const Student = require('../models/student');
 
 class StudentCtrl {
   static getStudents() {
-    Student.findAll()
+    Student.findAllWithSubject()
       .then(students => {
         console.log(students);
       })
