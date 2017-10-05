@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Subject</h1>
+    <table border="1">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Subject Name</th>
+          <th>Subject Code</th>
+        </tr>
+        <tr>
+          <%for(var i=0; i<subject.length; i++){%>
+            <td><%=subject[i].id%></td>
+            <td><%=subject[i].subject_name%></td>
+            <td><%=subject[i].subject_code%></td>
+            <td><a href="/subject/edit/<%=subject[i].id%>">edit</a>
+              <a href="/subject/delete/<%=subject[i].id%>">delete</a></td>
+          <%}%>
+        </tr>
+      </table>
+    </table>
+    <br>
+    <form action="/subject" method="post">
+      <label for="subject_name">Subject Name</label>
+      <input type="text" name="subject_name" value="">
+      <label for="subject_code">Subject Code</label>
+      <input type="text" name="subject_code" value="">
+      <input type="submit" name="" value="">
+    </form>
+    <a href="/">Home</a>
+  </body>
+</html>
