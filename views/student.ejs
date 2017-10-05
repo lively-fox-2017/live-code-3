@@ -14,23 +14,39 @@
             <th>FIRST NAME</th>
             <th>LAST NAME</th>
             <th>GENDER</th>
+            <th>LOOK SUBJECT</th>
+            <th>ACTION</th>
         </thead>
+        <%student.forEach(row=>{%>
         <tbody>
-            <%student.forEach(row=>{%>
             <td><%=row.id%></td>
             <td><%=row.first_name%></td>
             <td><%=row.last_name%></td>
             <td><%=row.gender%></td>
-            <%})%>
+            <td><a href="/student/subjects/:<%=row.id%>">Look Subjects</a></td>
+            <td>
+                <a href="/student/edit/:<%=row.id%>">EDIT</a> ||
+                <a href="/student/delete/:<%=row.id%>">DELETE</a>
+            </td>
         </tbody>
+        <%})%>
     </table>
-    <form action="/student" method="post">
+    <form action="student" method="post">
         <p>
-            <input type="text" name=>
+            <input type="text" name="first_name" placeholder="FIRST NAME">
         </p>
-        <p></p>
-        <p></p>
-        <p></p>
+        <p>
+            <input type="text" name="last_name" placeholder="LAST NAME">
+        </p>
+        <p>
+            <select type="text" name="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="SUBMIT">
+        </p>
     </form>
 </body>
 </html>

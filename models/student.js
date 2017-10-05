@@ -11,18 +11,18 @@ class Student {
     static findAll(cb) { //must to have
         db.all(`SELECT * FROM Students`, function(err, rows){
             if(!err){
-                console.log(rows);
+                // console.log(rows);
+                // let results = rows.map(m => new Student(m))
+                // return results
                 cb(rows)
             } else {
                 console.log(err);
             }
         })
-        // let results = students.map(m => new Student(m))
-        // return results
     }
 
     static findById(param, cb) { 
-        db.run(`SELECT * FROM Students WHERE id = ${param}`, (err, students)=>{
+        db.get(`SELECT * FROM Students WHERE id = ${param.id}`, (err, students)=>{
             if(!err){
                 cb(students)
             } else {
@@ -33,9 +33,30 @@ class Student {
 
     static findWhere() { } //nice to have
 
-    static create() { } //must to have
+    static create(body, cb) { 
+        db.run(`INSERT INTO Students (first_name, last_name, gender) 
+        VALUES ('${body.first_name}','${body.last_name}', '${body.gender}' )`, (err)=>{
+            if(!err){
+                cb()
+            } else {
+                cb(err)
+            }
+        })
+    } //must to have
 
-    static update() { } //must to have
+    static update(body, params, cb) { 
+        db.run(`UPDATE Students SET
+            first_name = '${body.first_name}',
+            last_name = '${body.last_name}',
+            gender = '${body.gender}'
+            WHERE id = ${params}`, (err)=>{
+                if(!err){
+                    cb()
+                } else {
+                    cb(err)
+                }
+            })
+    } //must to have
 
     static destroy() { } //must to have
 

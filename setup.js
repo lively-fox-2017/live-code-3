@@ -17,4 +17,8 @@ db.serialize(function(){
         FOREIGN KEY (subjectid) REFERENCES Subjects(id))`, ()=>{
             console.log('table StudentSubjects telah dibuat');
     })
+
+    // db.run(`ALTER TABLE StudentSubjects ADD COLUMN score INTEGER`, ()=>{
+    //     console.log('tambah kolom score di Student Subjects');
+    // })
 })
