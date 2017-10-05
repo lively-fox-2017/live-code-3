@@ -18,8 +18,8 @@
       <td><%= dataJsonSubjects[i].id %></td>
       <td><%= dataJsonSubjects[i].subject_code %></td>
       <td><%= dataJsonSubjects[i].subject_name %></td>
-      <td><a href="#">edit</td>
-      <td><a href="#">delete</td>
+      <td><a href="/subjects/edit/<%= dataJsonSubjects[i].id %>">edit</td>
+      <td><a href="/subjects/delete/<%= dataJsonSubjects[i].id %>">delete</td>
     </tr>
     <% } %>
   </table>

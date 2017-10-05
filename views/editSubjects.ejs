@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit Subjects</title>
+</head>
+<body>
+  <form action="/subjects/edit/<%= dataJsonSubjects[0].id %>" method="post">
+    Subject Code:<br>
+    <input type="text" name="subject_code" value="<%= dataJsonSubjects[0].subject_code %>">
+    <br>
+    Subject Name:<br>
+    <input type="text" name="subject_name" value="<%= dataJsonSubjects[0].subject_name %>">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

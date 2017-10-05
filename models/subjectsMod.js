@@ -27,9 +27,16 @@ class Subjects {
     })
   }
 
-  static findById() {
+  static findById(req) {
     return new Promise(function(resolve,reject){
-      db.all(`SELECT subject_code,subject_name FROM subjects`)
+      db.all(`SELECT * FROM subjects WHERE id = ${req.params.id}`,function(err,dataJsonSubjects){
+        if(err){
+          reject(err)
+        }
+        else{
+          resolve(dataJsonSubjects)
+        }
+      })
     })
   } //must to have
 
@@ -48,9 +55,31 @@ class Subjects {
     })
   } //must to have
 
-  static update() {} //must to have
+  static update(req) {
+    return new Promise(function(resolve,reject){
+      db.run(`UPDATE subjects SET subject_code = '${req.body.subject_code}', subject_name = '${req.body.subject_name}' WHERE id = ${req.params.id}`,function(err,dataJsonSubjects){
+        if(err){
+          reject(err)
+        }
+        else{
+          resolve(dataJsonSubjects)
+        }
+      })
+    })
+  } //must to have
 
-  static destroy() {} //must to have
+  static destroy(req) {
+    return new Promise(function(resolve,reject){
+      db.run(`DELETE FROM subjects WHERE id = ${req.params.id}`,function(err){
+        if(err){
+          reject(err)
+        }
+        else{
+          resolve()
+        }
+      })
+    })
+  } //must to have
 
 }
 

@@ -18,4 +18,28 @@ router.post('/',function(req,res){
   })
 })
 
+router.get('/edit/:id',function(req,res){
+  Subjects.findById(req).then(function(rows){
+    res.render('editSubjects.ejs',{dataJsonSubjects:rows});
+  }).catch(function(err){
+    console.log(err);
+  })
+})
+
+router.post('/edit/:id',function(req,res){
+  Subjects.update(req).then(function(){
+    res.redirect('/subjects')
+  }).catch(function(err){
+    console.log(err);
+  })
+})
+
+router.get('/delete/:id',function(req,res){
+  Subjects.destroy(req).then(function(){
+    res.redirect('/subjects')
+  }).catch(function(err){
+    console.log(err);
+  })
+})
+
 module.exports = router
