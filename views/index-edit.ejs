@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+    <div style='margin-top:30px;'>
+
+      <form action="<%= dataJsonSubject[0].id %>" method="post">
+        Subject Name:<br>
+        <input type="text" name="subjectName" value="<%= dataJsonSubject[0].subject_name %>">
+        <br>
+        Subject Code:<br>
+        <input type="text" name="subjectCode" value="<%= dataJsonSubject[0].subject_code %>">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+
+    </div>
+
+</body>
+</html>

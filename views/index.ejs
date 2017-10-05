@@ -5,21 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
+th, td {
+    padding: 15px;
+}
 </style>
   <title>INDEX LIST</title>
 </head>
@@ -36,15 +34,16 @@
       <th></th>
       <th></th>
     </tr>
-    <tr>
+
       <% for(let dataSubj=0; dataSubj<dataJsonSubject.length; dataSubj++){ %>
-      <td><%= dataJsonSubject[dataSubj].id%></td>
-      <td><%= dataJsonSubject[dataSubj].subject_name%></td>
-      <td><%= dataJsonSubject[dataSubj].subject_code%></td>
-      <td><a style="text-decoration: none;" href='/update/<%= dataJsonSubject[dataSubj].id %>'>Update</a></td>
-      <td><a style="text-decoration: none;" href='/delete/<%= dataJsonSubject[dataSubj].id %>'>Delete</a></td>
+        <tr>
+          <td><%= dataJsonSubject[dataSubj].id%></td>
+          <td><%= dataJsonSubject[dataSubj].subject_name%></td>
+          <td><%= dataJsonSubject[dataSubj].subject_code%></td>
+          <td><a style="text-decoration: none;" href='/update/<%= dataJsonSubject[dataSubj].id %>'>Update</a></td>
+          <td><a style="text-decoration: none;" href='/delete/<%= dataJsonSubject[dataSubj].id %>'>Delete</a></td>
+        </tr>
       <%}%>
-    </tr>
 
 
   </table>
