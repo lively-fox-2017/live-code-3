@@ -7,17 +7,30 @@
   <title>Subjects</title>
 </head>
 <body>
-  <tr>
-    <th>Subjects ID</th>
-    <th>Subjects Code</th>
-    <th>Subjects Name</th>
-  </tr>
-  <tr>
+  <table>
+    <tr>
+      <th>Subjects ID</th>
+      <th>Subjects Code</th>
+      <th>Subjects Name</th>
+    </tr>
     <% for(let i = 0; i < dataJsonSubjects.length; i++){ %>
-    <td><%= dataJsonSubjects[i].id %></td>
-    <td><%= dataJsonSubjects[i].subject_code %></td>
-    <td><%= dataJsonSubjects[i].subject_name %></td>
+    <tr>
+      <td><%= dataJsonSubjects[i].id %></td>
+      <td><%= dataJsonSubjects[i].subject_code %></td>
+      <td><%= dataJsonSubjects[i].subject_name %></td>
+      <td><a href="#">edit</td>
+      <td><a href="#">delete</td>
+    </tr>
     <% } %>
-  </tr>
+  </table>
+  <form action="/subjects" method="post">
+    Subject Code:<br>
+    <input type="text" name="subject_code">
+    <br>
+    Subject Name:<br>
+    <input type="text" name="subject_name">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
 </body>
 </html>
