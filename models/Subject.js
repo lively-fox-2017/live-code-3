@@ -47,7 +47,10 @@ class Subject {
 
       db.exec(`INSERT INTO subjects (subject_name, subject_code) VALUES ('${input.subject_name}', '${input.subject_code}')`, (err) => {
 
-        resolve();
+        if (err)
+          resolve('error');
+        else
+          resolve('success');
 
       });
 
@@ -63,7 +66,10 @@ class Subject {
 
       db.exec(`UPDATE subjects SET subject_name='${input.subject_name}', subject_code='${input.subject_code}'WHERE id = ${id}`, (err) => {
 
-        resolve();
+        if (err)
+          resolve('error');
+        else
+          resolve('success');
 
       });
 

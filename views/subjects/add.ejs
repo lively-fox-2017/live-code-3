@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ORM Mini</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    a {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Add a Subject</h1>
+
+  <% if (error) { %>
+
+      <div>
+        <p style="color: red"><strong>ERROR: <%= error %></strong></p>
+      </div>
+
+  <% } %>
+
+  <form action="/subjects/add" method="POST">
+    Subject Name: <br>
+    <input type="text" name="subject_name" autocomplete="off" required autofocus>
+    <br>
+    <br>
+    Subject Code: <br>
+    <input type="text" name="subject_code" autocomplete="off" required>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+    &nbsp;
+    <a href="/subjects/list">Cancel</a>
+  </form>
+
+</body>
+</html>
