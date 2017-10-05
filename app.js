@@ -13,14 +13,9 @@ var ejs = require('ejs')
 app.set('view engine','ejs')
 
 
-var router = express.Router();
-
 const index = require('./routes/index')
 const students = require('./routes/students')
 const subjects = require('./routes/subjects')
-
-
-// var router = express.Ro
 
 app.get('/', function (req, res) {
   res.redirect('/index')
@@ -28,7 +23,7 @@ app.get('/', function (req, res) {
 
 app.use('/index',index)
 app.use('/students',students)
-app.use('/contacts',contacts)
+// app.use('/contacts',contacts)
 
 
 app.listen(3000, function () {

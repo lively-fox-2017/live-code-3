@@ -14,8 +14,13 @@ app.set('view engine','ejs')
 
 var router = express.Router();
 
+const Students = require('../models/students')
+
 router.get('/', function (req, res) {
-  res.redirect('./index')
+  Students.selectAll().then((dataRow)=>{
+    // res.send(dataRow)
+    res.render('students' , {dataRow:dataRow})
+  })
 })
 
 module.exports = router;
