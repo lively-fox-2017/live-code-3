@@ -2,13 +2,17 @@
 
 const express = require('express');
 const router = express.Router();
+const model = require('../models/subject')
 
 router.get('/', function (req, res) {
   res.render('subject')
 })
 
 router.get('/list', function (req, res) {
-  res.send('list subject')
+  // res.send('list subject')
+  model.getAll((rows)=>{
+    res.render('subject', {data:rows})
+  })
 });
 
 router.get('/add', function (req, res) {

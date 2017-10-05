@@ -5,7 +5,32 @@
     <title></title>
   </head>
   <body>
-    <h1>Subject</h1>
+    <h1>Teacher</h1>
+
+    <table border = '1'>
+        <thead>
+          <tr>
+          <th>Id</th>
+          <th>subject_name</th>
+          <th>subject_code</th>
+          <th>teachersId</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+
+        <% data.forEach(row => { %>
+          <tr>
+          <td><%=row.id%></td>
+          <td><%=row.subject_name%></td>
+          <td><%=row.subject_code%></td>
+          <td><%=row.teachersId%></td>
+          <td>
+            <a href="/subject/edit/<%=row.id%>">Edit</a> |
+            <a href="/subject/delete/<%=row.id%>">delete</a>
+          </td>
+          </tr>
+        <% })%>
+    </table>
 
   </body>
 </html>

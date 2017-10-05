@@ -7,5 +7,33 @@
   <body>
     <h1>Teacher</h1>
 
+    <table border = '1'>
+        <thead>
+          <tr>
+          <th>Id</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+          <th>gender</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+
+        <% data.forEach(row => { %>
+          <tr>
+          <td><%=row.id%></td>
+          <td><%=row.first_name%></td>
+          <td><%=row.last_name%></td>
+          <td><%=row.email%></td>
+          <td><%=row.gender%></td>
+          <td>
+            <a href="/teacher/add">Add</a> |
+            <a href="/teacher/edit/<%=row.id%>">Edit</a> |
+            <a href="/teacher/delete/<%=row.id%>">delete</a>
+          </td>
+          </tr>
+        <% })%>
+    </table>
+
   </body>
 </html>
