@@ -45,11 +45,26 @@ class StudentSubjectRelation {
     return promise;
   } //must to have
 
-  static findWhere() {} //nice to have
+  static findWhere(column, value) {
+    let promise = new Promise((resolve, reject)=>{
+      let query = `SELECT * FROM student_subject_relations WHERE ${column} = '${value}'`;
+      db.all(query, (err,rows)=>{
+        if(err){
+          reject(err)
+        }else{
+          let result = rows.map((row)=>{return new StudentSubjectRelation(row)});
+          console.log(result);
+          resolve(result)
+        }
+      })
+    })
+    return promise
+  } //nice to have
 
   static create( student_id, subject_id, score) {
     let promise = new Promise ((resolve, reject)=>{
-      let query = `INSERT INTO student_subject_relations ( student_id, subject_id, score) values( '${student_id}', '${subject_id}'), '${score}';`;
+      let query = `INSERT INTO student_subject_relations ( student_id, subject_id, score) values( '${student_id}', '${subject_id}', '${score}');`;
+      console.log(query);
       db.run(query);
       resolve();
     })

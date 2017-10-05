@@ -5,6 +5,14 @@
     <title></title>
   </head>
   <body>
-    
+    <form action="/subject/add-student/<%=id%>" method="post">
+      <select name="student_id">
+        <%for(var student of students){%>
+          <option value="<%=student.id%>"><%=student.first_name%> <%=student.last_name%></option>
+        <%}%>
+
+      </select>
+      <input type="submit" name="submit" value="submit">
+    </form>
   </body>
 </html>

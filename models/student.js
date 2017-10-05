@@ -1,6 +1,8 @@
 'use strict';
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('sekolah.db');
+const StudentSubjectRelations = require('../models/student-subject-relations');
+const Subject = require('../models/subject');
 
 class Student {
   constructor(raw) {
@@ -43,7 +45,14 @@ class Student {
     return promise;
   } //must to have
 
-  static findWhere() {} //nice to have
+  static findWhere(student_id) {
+    let promise = new Promise((resolve, reject)=>{
+      StudentSubjectRelations.findWhere('student_id', student_id).then((rows)=>{
+        
+      })
+    })
+    return promise;
+  } //nice to have
 
   static create( first_name, last_name, email, gender) {
     let promise = new Promise ((resolve, reject)=>{

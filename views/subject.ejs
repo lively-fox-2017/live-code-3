@@ -16,15 +16,15 @@
         <td><%=subject.id%></td>
         <td><%=subject.subject_name%></td>
         <td><%=subject.subject_code%></td>
-        <td><a href="/subject/addStudent">add student</a><a href="/subject/edit/<%=subject.id%>">edit</a>|<a href="/subject/delete/<%=subject.id%>">delete</a></td>
+        <td><a href="/subject/add-student/<%=subject.id%>">add student</a>|<a href="/subject/edit/<%=subject.id%>">edit</a>|<a href="/subject/delete/<%=subject.id%>">delete</a></td>
       <%}%>
     </table>
 
 
     <form action="/subject" method="post">
-      first_name :
+      subject_name :
       <input type="text" name="subject_name">
-      last_name :
+      subject_code :
       <input type="text" name="subject_code" value="">
 
       <input type="submit">

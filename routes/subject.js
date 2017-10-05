@@ -2,6 +2,7 @@
 const express = require('express');
 const Subject = require('../models/subject');
 const Student = require('../models/student');
+const StudentSubjectRelations = require('../models/student-subject-relations');
 
 let router = express.Router();
 
@@ -36,11 +37,16 @@ router.post('/edit/:id', (req, res)=>{
   })
 })
 
-router.get('/add-student', (req,res)=>{
-  Student.findAll().then((students)>{
+router.get('/add-student/:id', (req,res)=>{
+  Student.findAll().then((students)=>{
     console.log(students);
-    res.render('add-student')
+    res.render('add-student', {students, id:req.params.id})
   })
+})
+
+router.post('/add-student/:id', (req,res)=>{
+  StudentSubjectRelations.create(req.body.student_id, req.params.id,'');
+  res.redirect('/subject')
 })
 
 module.exports = router;
