@@ -50,15 +50,12 @@ class Student {
                     .then(subjects => {
                       student.subjects = subjects;
                       if (index >= students.length - 1)
-                        console.log(require('util').inspect(students, {
-                          depth: null
-                        }));
+                        resolve(students);
                     })
                     .catch(reason => {
                       console.log(reason);
                     })
-                } else
-                  student.subjects = [];
+                }
               })
               .catch(reason => {
                 console.log(reason);

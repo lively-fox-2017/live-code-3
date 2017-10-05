@@ -1,10 +1,10 @@
 const Subject = require('../models/subject');
 
 class SubjectCtrl {
-  static getSubjects() {
+  static getSubjects(req, res) {
     Subject.findAll()
       .then(subjects => {
-        console.log(subjects);
+        res.send(subjects);
       })
       .catch(reason => {
         console.log(reason);

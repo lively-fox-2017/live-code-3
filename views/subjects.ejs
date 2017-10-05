@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Show All Students</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+      <% for (let i = 0; i < subjects.length; i++) {%>
+        <tr>
+          <td><%= subjects[i].id %></td>
+          <td><%= subjects[i].first_name %></td>
+          <td><%= subjects[i].last_name %></td>
+        </tr>
+      <%}%>
+    </table>
+  </body>
+</html>
