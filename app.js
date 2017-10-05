@@ -5,10 +5,10 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 const index = require('./routes/index')
-// const routerTeachers = require('./routes/teachers')
+const routerTeachers = require('./routes/teachers')
 const routerSubjects = require('./routes/subjects')
 app.use('/',index)
-// app.use('/teachers',routerTeachers)
+app.use('/teachers',routerTeachers)
 app.use('/subjects',routerSubjects)
 app.listen(3000, function(req,res){
   console.log('Listen 3000 success !');

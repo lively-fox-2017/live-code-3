@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Subject = require('../models/subject')
-
+const Teacher = require('../models/teacher')
 router.get('/', (req,res)=>{
   Subject.findAll()
   .then(subjects=>{
@@ -15,7 +15,7 @@ router.get('/', (req,res)=>{
 router.get('/add', (req,res)=>{
   Subject.findAll()
   .then(subjects=>{
-    res.render('add_subjects',{dataSubjects:subjects})
+    res.render('add_subjects',{dataSubjects:subjects, dataError:null})
   })
   .catch(err=>{
     res.send(err)
@@ -28,7 +28,18 @@ router.post('/add', (req,res)=>{
     res.redirect('/subjects')
   })
   .catch(err=>{
-    res.send(err)
+  // res.send(err)
+  if(err){
+    if(err.code == "SQLITE_CONSTRAINT"){
+      Subject.findAll()
+      .then(subjects=>{
+        Teacher.findAll()
+        .then(teachers=>{
+          res.render('add_subjects', {dataSubjects:subjects, dataTeachers:teachers, dataError:"CODE sudah dipakai"})
+        })
+        })
+      }
+    }
   })
 })
 

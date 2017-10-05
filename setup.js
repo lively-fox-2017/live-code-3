@@ -5,7 +5,9 @@
 // 2. Teacher memiliki informasi `first_name`, `last_name`, `email` dan `gender`
 // (gunakan dropdown dengan pilihan: female/male. Harus re-populate ketika melakukan edit).
 // Teacher adalah orang yang mengajarkan suatu Subject di sekolah tersebut
-
+// *Bonus Poin:*
+// - Alter table Subject untuk mengubah column `subject_code` menjadi Unique (Implementasikan di file setup.js)(5)
+// - Handle error dan tampilkan error 'Subject Code already used' pada view jika user meng-input data Subject dengan `subject_code` yang sudah ada (10)
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('db/database.db');
 
@@ -26,3 +28,15 @@ db.serialize(function() {
     }
   })
 })
+
+function alterUnique() {
+  let query = `CREATE UNIQUE INDEX subject_code ON Subject(subject_code)`
+  db.run(query, function(err) {
+    if(!err){
+      console.log('Alter Unique Berhasil');
+    }else {
+      console.log(err);
+    }
+  })
+}
+alterUnique()
