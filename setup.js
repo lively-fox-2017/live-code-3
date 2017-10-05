@@ -16,21 +16,21 @@ var db = new sqlite3.Database('data/data.db');
 
 db.serialize((err)=>{
 
-  db.run(`CREATE TABLE IF NOT EXISTS Subjects (id INTEGER AUTO INCREMENT primary key, subject_name TEXT, subject_code TEXT ) `)
+  db.run(`CREATE TABLE IF NOT EXISTS Subjects (id INTEGER primary key AUTOINCREMENT, subject_name TEXT, subject_code TEXT ) `)
   if(err){
     console.log(err)
   }else{
     console.log('jadi');
   }
 
-  db.run(`CREATE TABLE IF NOT EXISTS Teacher (id INTEGER AUTO INCREMENT primary key, first_name TEXT, last_name TEXT, email TEXT, gender TEXT ) `)
+  db.run(`CREATE TABLE IF NOT EXISTS Teacher (id INTEGER  primary key AUTOINCREMENT, first_name TEXT, last_name TEXT, email TEXT, gender TEXT ) `)
   if(err){
     console.log(err)
   }else{
     console.log('jadi2');
   }
 
-  db.run(`CREATE TABLE IF NOT EXISTS Student (id INTEGER AUTO INCREMENT primary key, first_name TEXT, last_name TEXT, email TEXT, gender TEXT ) `)
+  db.run(`CREATE TABLE IF NOT EXISTS Student (id INTEGER  primary key AUTOINCREMENT, first_name TEXT, last_name TEXT, email TEXT, gender TEXT ) `)
   if(err){
     console.log(err)
   }else{
@@ -39,10 +39,5 @@ db.serialize((err)=>{
 
 })
 
-db.run(`INSERT INTO Subjects subject_name, subject_code VALUES ('${MATH}', '${A1}')`)
-if(err){
-  console.log(err);
-}else{
-  console.log('bisa');
-}
-})
+
+  db.run('INSERT INTO Subjects (subject_name, subject_code) VALUES ("Math", "A1B1" )')

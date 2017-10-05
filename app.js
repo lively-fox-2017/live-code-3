@@ -6,13 +6,13 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 
 
-
+app.set('view engine', 'ejs')
 // const index = require('./routers/index')
 // app.use('/', index);
 
 
 const subject = require('./routers/subjects')
-app.use('/', subject);
+app.use('/subjects', subject);
 
 
 

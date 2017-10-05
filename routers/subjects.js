@@ -9,16 +9,29 @@ var db = new sqlite3.Database('data/data.db');
 // })
 
 router.get('/', function(req,res){
-  res.send('hello')
+  //res.send('hello')
   Subject.findAll()
   .then((rowSubject)=>{
-    console.log(rowSubject);
-  //  res.render('subjects',{rowSubject})
+    //console.log('inininini',rowSubject);
+    res.render('subjects',{rowSubject})
   })
 })
 
 
+router.get('/', function(req, res){
+  res.send('hello')
+  Subject.findById(req.params.id)
+  .then((rowSubject)=>{
+    res.render('editSubject',{rowSubject:rowSubject})
+  })
+})
 
+router.post('/',function(req, res){
+  Subject.create(req.body)
+  .then((rowSubject)=>{
+    res.redirect('subjects',{err, rowSubject:rowSubject})
+  })
+})
 
 
 
