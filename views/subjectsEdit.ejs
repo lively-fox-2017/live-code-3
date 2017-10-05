@@ -13,7 +13,6 @@
           <th>ID</th>
           <th>Subject Name</th>
           <th>Subject Code</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -22,24 +21,20 @@
             <td><%=rows.id%></td>
             <td><%=rows.subject_name%></td>
             <td><%=rows.subject_code%></td>
-            <td>
-              <a href="subjects/update/<%=rows.id%>">Edit</a>
-              <a href="subjects/delete/<%=rows.id%>">Delete</a>
-            </td>
           </tr>
         <%})%>
       </tbody>
    </table>
    <br>
-   <form action="/subjects/update/<%=rows.id%>" method="POST">
+   <form action="/subjects/update/<%=dataSubjects[0].id%>" method="POST">
      <fieldset>
        <br><br>
-       <legend>Add Data Subjects:</legend>
+       <legend>Edit Data Subjects:</legend>
        subject_name:<br>
-       <input type="text" name="subject_name" placeholder="subject_name">
+       <input type="text" name="subject_name" value="<%=dataSubjects[0].subject_name%>" placeholder="subject_name">
        <br>
        Subject Code:<br>
-       <input type="text" name="subject_code" placeholder="subject_code">
+       <input type="text" name="subject_code" value="<%=dataSubjects[0].subject_code%>" placeholder="subject_code">
        <br><br>
        <input type="submit" value="SUBMIT">
      </fieldset>

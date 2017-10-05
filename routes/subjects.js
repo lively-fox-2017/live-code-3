@@ -14,7 +14,7 @@ router.get('/', (req, res)=>{
 
 
 router.post('/', (req, res)=>{
-  ModelSubjects.create()
+  ModelSubjects.create(req.body)
   .then(()=>{
     res.redirect('/subjects')
   })
@@ -24,9 +24,9 @@ router.post('/', (req, res)=>{
 })
 
 router.get('/update/:id', (req, res)=>{
-  ModelSubjects.findById(req.params.id, req.body)
+  ModelSubjects.findById(req.params.id)
   .then((rowsSubjects)=>{
-    res.send(rowsSubjects)
+    res.render('subjectsEdit',{dataSubjects: rowsSubjects})
   })
   .catch(err=>{
     res.send(err)
@@ -34,9 +34,9 @@ router.get('/update/:id', (req, res)=>{
 })
 
 router.post('/update/:id', (req, res)=>{
-  ModelSubjects.update()
+  ModelSubjects.update(req.params.id, req.body)
   .then(()=>{
-    res.send()
+    res.redirect('/subjects')
   })
   .catch(err=>{
     res.send(err)

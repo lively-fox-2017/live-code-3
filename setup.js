@@ -22,10 +22,3 @@ db.serialize(() => {
   })
 
 })
-
-
-// <select name="idContacts">
-//   <% dataSubjects.forEach(row =>{%>
-//     <option value="<%=row.id%>"><%=row.subject_name%></option>
-//   <% })%>
-// </select>

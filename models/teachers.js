@@ -40,7 +40,7 @@ class ModelTeachers {
 
   static update(body, params){
     return new Promise(function(resolve, reject) {
-      db.run(`UPDATE FROM teachers SET subject_name = '${req.body.subject_name}', subject_code = '${req.body.subject_code}' WHERE id = ${params}`, (err)=>{
+      db.run(`UPDATE FROM teachers SET first_name = '${req.body.first_name}', last_name = '${req.body.last_name}', email = '${req.body.email}', gender = '${req.body.gender}, subjectsid = ${req.body.subjectsid} WHERE id = ${params}`, (err)=>{
         if (!err) {
           resolve()
         }else {
