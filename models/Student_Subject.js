@@ -73,6 +73,20 @@ class Student_Subject {
 
   }
 
+  static insert(student_id, subject_id) {
+
+    const insertStudentSubject = new Promise((resolve, reject) => {
+
+      db.exec(`INSERT INTO students_subjects (student_id, subject_id) VALUES (${student_id}, ${subject_id})`, (err) => {
+        resolve();
+      });
+
+    });
+
+    return Promise.resolve(insertStudentSubject);
+
+  }
+
 }
 
 module.exports = Student_Subject;

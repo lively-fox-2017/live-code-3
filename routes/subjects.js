@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const Subject = require('../models/Subject');
+const Student = require('../models/Student');
+const Student_Subject = require('../models/Student_Subject');
 
 router.get('/list', (req, res) => {
 
@@ -9,6 +11,47 @@ router.get('/list', (req, res) => {
     res.render('subjects/list', {
       subjects: subjects
     });
+  });
+
+});
+
+router.get('/add-student/:id', (req, res) => {
+
+  Subject.fetchById(req.params.id).then((subject) => {
+
+    if (subject) {
+
+      Student.fetchAll().then((students) => {
+
+        res.render('subjects/add-student', {
+          students: students,
+          subject_id: req.params.id
+        });
+
+      });
+
+    } else {
+      res.redirect('/subjects/list');
+    }
+
+  });
+
+});
+
+router.post('/add-student/:id', (req, res) => {
+
+  Subject.fetchById(req.params.id).then((subject) => {
+
+    if (subject) {
+
+      Student_Subject.insert(req.body.student_id, req.params.id).then(() => {
+        res.redirect('/subjects/list');
+      });
+
+    } else {
+      res.redirect('/subjects/list');
+    }
+
   });
 
 });
