@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Subjects</title>
+</head>
+<body>
+  <tr>
+    <th>Subjects ID</th>
+    <th>Subjects Code</th>
+    <th>Subjects Name</th>
+  </tr>
+  <tr>
+    <% for(let i = 0; i < dataJsonSubjects.length; i++){ %>
+    <td><%= dataJsonSubjects[i].id %></td>
+    <td><%= dataJsonSubjects[i].subject_code %></td>
+    <td><%= dataJsonSubjects[i].subject_name %></td>
+    <% } %>
+  </tr>
+</body>
+</html>
