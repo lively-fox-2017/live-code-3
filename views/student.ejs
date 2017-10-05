@@ -23,10 +23,10 @@
             <td><%=row.first_name%></td>
             <td><%=row.last_name%></td>
             <td><%=row.gender%></td>
-            <td><a href="/student/subjects/:<%=row.id%>">Look Subjects</a></td>
+            <td><a href="/student/subjects/<%=row.id%>">Look Subjects</a></td>
             <td>
-                <a href="/student/edit/:<%=row.id%>">EDIT</a> ||
-                <a href="/student/delete/:<%=row.id%>">DELETE</a>
+                <a href="/student/edit/<%=row.id%>">EDIT</a> ||
+                <a href="/student/delete/<%=row.id%>">DELETE</a>
             </td>
         </tbody>
         <%})%>

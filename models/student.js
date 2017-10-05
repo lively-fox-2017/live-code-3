@@ -58,7 +58,15 @@ class Student {
             })
     } //must to have
 
-    static destroy() { } //must to have
+    static destroy(params, cb) { 
+        db.run(`DELETE FROM Students WHERE id = ${params.id}`, (err)=>{
+            if(!err){
+                cb()
+            } else {
+                cb(err)
+            }
+        })
+    } //must to have
 
 }
 
