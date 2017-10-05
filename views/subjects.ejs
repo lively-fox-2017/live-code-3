@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Subject</title>
+</head>
+<body>
+
+<table style="width:30%", border=1>
+  <tr>
+
+    <th>Id</th>
+    <th>Subject Name</th> 
+    <th>Subject Code</th>
+  </tr>
+  <% for(var i = 0; i < dataSubject.length; i++){%>
+  <tr>
+    <td><%=dataSubject[i].id%></td>
+    <td><%=dataSubject[i].first_name%></td>
+    <td><%=dataSubject[i].last_name%></td>
+    <td><%=dataSubject[i].email%></td>
+    <td><%=dataSubject[i].gender%></td>
+  </tr>
+  <%}%>
+ 
+</table>
+
+</body>
+</html>
