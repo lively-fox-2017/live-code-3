@@ -6,16 +6,13 @@
 </head>
 <body>
 
-	<h3>Welcome, ? (Subjects)</h3>
+	<h3>Welcome, ? (Subjects Teacher)</h3>
 
 	<table border="1" cellpadding="5">
 		<thead>
 			<th>No</th>
 			<th>Subject Name</th>
 			<th>Subject Code</th>
-			<th>Teacher Name</th>
-			<th>Teacher</th>
-			<th>Action</th>
 		</thead>
 		<% let j = 1
 			for(let i = 0; i < dataSub.length; i++){ %>
@@ -23,32 +20,22 @@
 				<td><%= j %></td>
 				<td><%= dataSub[i].subject_name %></td>
 				<td><%= dataSub[i].subject_code %></td>
-				<td>
-					<%= dataSub[i].first_name %> <%= dataSub[i].last_name %>
-				</td>
-				<td>
-					<a href="/subjects/teacher/<%= dataSub[i].id %>">Assign Teacher</a>
-				</td>
-				<td>
-					<a href="/subjects/edit/<%= dataSub[i].id %>">Edit</a>
-					<a href="/subjects/delete/<%= dataSub[i].id %>">Delete</a>
-				</td>
 			</tbody>
 		<% j++ } %>
 	</table>
 
-	<form action="/subjects" method="post" style="margin-top: 20px">
+	<form action="/subjects/teacher/<%= dataSubId[0].id %>" method="post" style="margin-top: 20px">
 		<table>
 			<tr>
 				<td>Subject Name: </td>
 				<td>
-					<input type="text" name="sn">
+					<input type="text" name="sn" value="<%= dataSubId[0].subject_name %>">
 				</td>
 			</tr>
 			<tr>
 				<td>Subject Code: </td>
 				<td>
-					<input type="text" name="sc">
+					<input type="text" name="sc" value="<%= dataSubId[0].subject_code %>">
 				</td>
 			</tr>
 			<tr>

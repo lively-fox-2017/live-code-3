@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+</head>
+<body>
+
+	<h3>Welcome, ? (Subjects)</h3>
+
+	<form action="/subjects/edit/<%= dataSub.id %>" method="post" style="margin-top: 20px">
+		<table>
+			<tr>
+				<td>Subject Name: </td>
+				<td>
+					<input type="text" name="sn" value="<%= dataSub.subject_name %>">
+				</td>
+			</tr>
+			<tr>
+				<td>Subject Code: </td>
+				<td>
+					<input type="text" name="sc" value="<%= dataSub.subject_code %>">
+				</td>
+			</tr>
+			<tr>
+				<td>Teacher Name: </td>
+				<td>
+					<select name="teacherName">
+						<option value=""> - choose - </option>
+						<% for(let i = 0; i < dataTea.length; i++){ %>
+							<% let selected = 'selected' 
+								if(dataSub.teacher_id === dataTea[i].id){ %>
+								<option <%= selected %> value="<%= dataTea[i].id %>"><%= dataTea[i].first_name %></option>
+							<% }else{ %>
+								<option value="<%= dataTea[i].id %>"><%= dataTea[i].first_name %></option>
+							<% } %>
+						<% } %>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="submit" value="Save">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<br>
+
+	<a href="/"> << back to home </a>
+	
+</body>
+</html>
