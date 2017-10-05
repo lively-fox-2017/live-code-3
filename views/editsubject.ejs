@@ -7,9 +7,9 @@
   <body>
     <form action="/subject/edit/<%= dataSubject.id%>" method="post">
       <label>Subject Name</label><br>
-      <input type="text" name="subject_name" value="<%= dataSubject.subject_name%>"><br>
+      <input type="text" name="subject_name" value="<%= dataSubject.subject_name%>" required><br>
       <label>Subject Code</label><br>
-      <input type="text" name="subject_code" value="<%= dataSubject.subject_code%>"><br>
+      <input type="text" name="subject_code" value="<%= dataSubject.subject_code%>" required><br>
       <input type="submit" value="Submit">
     </form>
   </body>

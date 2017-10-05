@@ -1,3 +1,6 @@
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database("./livecode.db");
+
 class Student {
   constructor(id, first_name, last_name, email, gender) {
     this.id = id;
@@ -31,7 +34,7 @@ class Student {
           reject(err);
         } else {
           let objStudent = new Student(rowsStudentID.id, rowsStudentID.first_name, rowsStudentID.last_name, rowsStudentID.email, rowsStudentID.gender);
-          resolve(objSubject);
+          resolve(objStudent);
         }
       })
     });

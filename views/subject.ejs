@@ -21,7 +21,7 @@
             <td><%= row.id%></td>
             <td><%= row.subject_name%></td>
             <td><%= row.subject_code%></td>
-            <td><a href="/subject/edit/<%= row.id%>">Edit</a> | <a href="/subject/delete/<%= row.id%>">Delete</a></td>
+            <td><a href="/subject/edit/<%= row.id%>">Edit</a> | <a href="/subject/delete/<%= row.id%>">Delete</a> | <a href="#">Add Student</a></td>
           <%})%>
         </tr>
       </tbody>
@@ -29,9 +29,9 @@
 
     <form action="/subject/insert" method="post">
       <label>Subject Name</label><br>
-      <input type="text" name="subject_name"><br>
+      <input type="text" name="subject_name" required><br>
       <label>Subject Code</label><br>
-      <input type="text" name="subject_code"><br>
+      <input type="text" name="subject_code" required><br>
       <input type="submit" value="Submit">
     </form>
   </body>

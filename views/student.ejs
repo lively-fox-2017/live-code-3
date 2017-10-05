@@ -12,7 +12,7 @@
           <td>ID</td>
           <td>First Name</td>
           <td>Last Name</td>
-          <td>Email/td>
+          <td>Email</td>
           <td>Gender</td>
           <td>Action</td>
         </tr>
@@ -25,17 +25,23 @@
             <td><%= row.last_name%></td>
             <td><%= row.email%></td>
             <td><%= row.gender%></td>
-            <td><a href="/student/edit/<%= row.id%>">Edit</a> | <a href="/student/delete/<%= row.id%>">Delete</a></td>
+            <td><a href="/student/edit/<%= row.id%>">Edit</a> | <a href="/student/delete/<%= row.id%>">Delete</a> | <a href="#">Subject Assigned</a></td>
           <%})%>
         </tr>
       </tbody>
     </table><hr />
 
-    <form action="/subject/insert" method="post">
-      <label>Subject Name</label><br>
-      <input type="text" name="subject_name"><br>
-      <label>Subject Code</label><br>
-      <input type="text" name="subject_code"><br>
+    <form action="/student/insert" method="post">
+      <label>First Name</label><br>
+      <input type="text" name="first_name" required><br>
+      <label>Last Name</label><br>
+      <input type="text" name="last_name" required><br>
+      <label>Email</label><br>
+      <input type="text" name="email" required><br>
+      <select name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select><br>
       <input type="submit" value="Submit">
     </form>
   </body>
