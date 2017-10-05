@@ -1,14 +1,33 @@
 const express = require('express')
 const router = express.Router()
 const Subject = require('../models/subjects')
+const Teacher = require('../models/teachers')
+
+// router.get('/', function(req,res) {
+//   Subject.findAll()
+//   .then(dataSubject => {
+//     res.render('subjects/subjects', {dataSubject: dataSubject})
+//   })
+//   .catch(err => {
+//     res.send(err)
+//   })
+// })
 
 router.get('/', function(req,res) {
   Subject.findAll()
   .then(dataSubject => {
-    res.render('subjects/subjects', {dataSubject: dataSubject})
-  })
-  .catch(err => {
-    res.send(err)
+  Teacher.findAll()
+  .then(dataTeacher => {
+    for (let i = 0; i < dataSubject.length; i++) {
+        for (let j = 0; j < dataTeacher.length; j++) {
+          if (dataSubject[i].id_teacher == dataTeacher[j].id){
+            dataSubject[i].name = dataTeacher[j].first_name + ' ' + dataTeacher[j].last_name
+          }
+        }
+      }
+      // res.send(dataSubject)
+      res.render('subjects/subjects', {dataSubject: dataSubject, dataTeacher: dataTeacher})
+    })
   })
 })
 
