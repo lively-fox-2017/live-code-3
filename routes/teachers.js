@@ -25,8 +25,8 @@ router.get('/', function(req,res) {
             }
           }
         }
-        res.send(dataTeacher)
-        // res.render('teachers/teachers', {dataTeacher: dataTeacher, dataSubject: dataSubject})
+        // res.send(dataTeacher)
+        res.render('teachers/teachers', {dataTeacher: dataTeacher, dataSubject: dataSubject})
     })
   })
 })
