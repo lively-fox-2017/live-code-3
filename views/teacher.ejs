@@ -5,12 +5,32 @@
     <title></title>
   </head>
   <body>
-    <thead>
-      <th>Nama Pelajaran</th>
-      <th>Kode Pelajaran</th>
-    </thead>
-    <tbody>
+    <table border="2px">
+      <thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>action</th>
+      </thead>
+      <tbody>
+        <%dataTeacher.forEach(data=>{%>
+        <tr>
+            <td><%=data.id%></td>
+            <td><%=data.first_name%></td>
+            <td><%=data.last_name%></td>
+            <td><%=data.email%></td>
+            <td><%=data.gender%></td>
+            <td><a href="/add">Tambah Teacher</a>
+              <a href="/add">Edit Teacher</a>
+              <a href="/add">Delete Teacher</a>
+            </td>
 
-    </tbody>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+
   </body>
 </html>

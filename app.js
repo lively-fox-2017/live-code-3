@@ -1,18 +1,20 @@
-const express = require('express')
-const app = express()
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('./db/database.db');
+const express=require('express')
+const app=express()
 var bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
-// parse application/json
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+var sqlite3= require ('sqlite3');
+var db=new sqlite3.Database('./db/database.db')
 
-app.use('../student',student)
-app.use('../teacher',teacher)
 
-const student=require('./routes/student')
+const index=require('./routes/index')
+const subject=require('./routes/subject')
 const teacher=require('./routes/teacher')
+
+app.use('/',index)
+app.use('/subject',subject)
+app.use('/teacher',teacher)
 
 
 // app.get('/', function (req, res) {

@@ -1,16 +1,18 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./db/database.db');
 
-class Teacher {
-  constructor() {
 
+class Subject {
+  constructor(raw) {
+    this.attribute1 = raw.attribute1
+    this.attribute2 = raw.attribute2
   }
 
   static findAll() { //must to have
     let promise = new Promise (function(resolve,reject){
-      db.all(`select * from Teachers`,(err,dataTeacher)=>{
+      db.all(`select * from Students`,(err,dataSubject)=>{
         if(!err){
-          resolve(dataTeacher)
+          resolve(dataSubject)
         }else{
           reject(err)
         }
@@ -30,4 +32,4 @@ class Teacher {
   static destroy() {} //must to have
 
 }
-module.exports = Teacher;
+module.exports = Subject;
