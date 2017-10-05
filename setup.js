@@ -49,5 +49,19 @@ function alterTables(){
   })
 }
 
+function createConjunction(){
+  let sqlq = 'create table IF NOT EXISTS Students_Subjects ( id integer primary key autoincrement, studentsID integer references Students(id) ,  subjectsID integer references Subjects(id)  )'
+  db.run(sqlq,(err)=>{
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log('table conjunct ceated');
+    }
+  })
+}
+
+
 createTables()
 alterTables()
+createConjunction()

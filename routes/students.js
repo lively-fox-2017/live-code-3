@@ -1,9 +1,6 @@
 var express = require('express')
 var app = express()
 
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database(':memory:');
-
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -18,6 +15,7 @@ const Students = require('../models/students')
 
 router.get('/', function (req, res) {
   Students.selectAll().then((dataRow)=>{
+    console.log(dataRow);
     // res.send(dataRow)
     res.render('students' , {dataRow:dataRow})
   })

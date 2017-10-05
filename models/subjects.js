@@ -12,22 +12,20 @@ app.use(bodyParser.json())
 var ejs = require('ejs')
 app.set('view engine','ejs')
 
-class Students {
+class Subjects {
   constructor(data){
     this.id=data.id
-    this.first_name    =  data.first_name
-    this.last_name    =  data.last_name
-    this.email    =  data.email
-    this.genderID    =  data.genderID
+    this.subject_name    =  data.subject_name
+    this.subject_code    =  data.subject_code
   }
 
   static selectAll(){
     return new Promise(function(resolve, reject) {
-      db.all('select * from Students', (err,rows)=>{
+      db.all('select * from Subjects', (err,rows)=>{
         // console.log(rows);
         let data = []
         rows.forEach(row=>{
-          let dataRow = new Students (row)
+          let dataRow = new Subjects (row)
           data.push(dataRow)
         })
         resolve(data)
@@ -37,11 +35,11 @@ class Students {
 
   static selectID(id){
     return new Promise(function(resolve, reject) {
-      db.all(`select * from Students where id='${id}'`, (err,rows)=>{
+      db.all(`select * from Subjects where id='${id}'`, (err,rows)=>{
         // console.log(rows);
         let data = []
         rows.forEach(row=>{
-          let dataRow = new Students (row)
+          let dataRow = new Subjects (row)
           data.push(dataRow)
         })
         resolve(data)
@@ -50,17 +48,17 @@ class Students {
   }
 
 
-  static insert(first_name,last_name,email,genderID){
+  static insert(subject_name,subject_code){
     return new Promise(function(resolve, reject) {
-      db.run(`insert into Students values(null , '${first_name}','${last_name}','${email}','${genderID}')`, function (err){
+      db.run(`insert into Subjects values(null , '${subject_name}','${subject_code}')`, function (err){
         resolve(this.lastID)
       })
     });
   }
 
-  static edit(first_name,last_name,email,genderID){
+  static edit(subject_name,subject_code){
     return new Promise(function(resolve, reject) {
-      db.run(`update Students  set first_name='${first_name}',last_name='${last_name}',email='${email}',genderID'${genderID}')`, function (err){
+      db.run(`update Subjects  set subject_name='${subject_name}',subject_code='${subject_code}')`, function (err){
         resolve(this.lastID)
       })
     });
@@ -68,7 +66,7 @@ class Students {
 
   static deleteID(id){
     return new Promise(function(resolve, reject) {
-      db.run(`delete from Students where id = '${id}'`, function (err){
+      db.run(`delete from Subjects where id = '${id}'`, function (err){
         resolve(this.lastID)
       })
     });
@@ -78,4 +76,4 @@ class Students {
 
 
 
-module.exports = Students;
+module.exports = Subjects;
