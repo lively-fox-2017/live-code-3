@@ -1,0 +1,25 @@
+{
+  "name": "orm-mini",
+  "version": "1.0.0",
+  "description": "## Rules",
+  "main": "setup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lively-fox-2017/orm-mini.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lively-fox-2017/orm-mini/issues"
+  },
+  "homepage": "https://github.com/lively-fox-2017/orm-mini#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.1",
+    "sqlite3": "^3.1.13"
+  }
+}
