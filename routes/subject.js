@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const modelsSubject = require('../models/subject');
+const modelsTeacher = require('../models/teacher');
 
 router.get('/', function (req, res) {
   // res.send('Hello World')
@@ -59,4 +60,25 @@ router.get('/delete/:id', function (req, res) {
 
 })
 
+router.get('/:id/assign_teacher', function (req, res) {
+  modelsTeacher.findAll()
+  .then((data)=>{
+    res.render('assign_teacher')
+  })
+  .catch((err)=>{
+    res.send(err);
+  })
+
+})
+
+router.post('/:id/assign_teacher', function (req, res) {
+  modelsTeacher.update(req.body)
+  .then((data)=>{
+    res.redirect('/subject')
+  })
+  .catch((err)=>{
+    res.send(err);
+  })
+
+})
 module.exports=router;

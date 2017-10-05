@@ -70,7 +70,6 @@ class Teacher {
       })
     })
   } //must to have
-
 }
 
 module.exports = Teacher

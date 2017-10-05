@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Assign Teacher</title>
+  </head>
+  <body>
+    <form class="" action="subject/<%=data.id%>/assign_teacher" method="post">
+      <select class="" name="TeacherId">
+        <%if(data){data.forEach(rows=>{%>
+          <option value="<%=data.id%>"><%=data.name%></option>
+        <%})}%>
+      </select><br><br>
+      <button type="submit" name="button">Assign</button>
+    </form>
+  </body>
+</html>

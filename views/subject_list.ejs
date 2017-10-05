@@ -12,6 +12,7 @@
         <th>Id</th>
         <th>subject name</th>
         <th>subject code</th>
+        <th>assign teacher</th>
         <th>Options</th>
       </thead>
       <tbody>
@@ -20,6 +21,7 @@
             <td><%=rows.id%></td>
             <td><%=rows.subject_name%></td>
             <td><%=rows.subject_code%></td>
+            <td><a href="/subject/<%=rows.id%>/assign_teacer"></a></td>  
             <td>
               <a href="/subject/edit/<%=rows.id%>">Edit</a>
               <a href="#">|</a>

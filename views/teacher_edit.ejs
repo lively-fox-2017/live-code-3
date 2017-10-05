@@ -17,14 +17,14 @@
       Gender <br>
       <select class="" name="gender">
         <%if (gender){gender.forEach(rows=>{%>
-          <%if (gender.gender==data.gener){
-            <option value="<%=gender.gender%>" selected><%=gender.gender%></option>
-          } else {
-            <option value="<%=gender.gender%>"><%=gender.gender%></option>            
-          }%>
+          <%if (rows.gender==data.gender){%>
+            <option value="<%=rows.gender%>" selected><%=rows.gender%></option>
+          <%} else {%>
+            <option value="<%=rows.gender%>"><%=rows.gender%></option>
+          <%}%>
         <%})}%>
       </select><br><br>
-      <button type="submit" name="button">Add Data</button>
+      <button type="submit" name="button">Edit Data</button>
     </form>
   </body>
 </html>
