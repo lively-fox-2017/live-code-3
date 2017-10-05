@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Subject</title>
+  </head>
+  <body>
+    <form action="/subject/update/<%= dataRows.id %>" method="post">
+      Subject Name <input type="text" name="subject_name" placeholder="Subject Name" value="<%= dataRows.subject_name %>"><br>
+      Subject Code <input type="text" name="subject_code" placeholder="Subject Code" value="<%= dataRows.subject_code %>"><br>
+      <input type="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

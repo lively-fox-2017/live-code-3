@@ -55,7 +55,7 @@ function addDummyData() {
 }
 
 function alterSubjectCode() {
-  db.run('', function(err){
+  db.run('CREATE UNIQUE INDEX "subject_code_unique" ON Subject(subject_code);', function(err){
     console.log(err);
   })
 }

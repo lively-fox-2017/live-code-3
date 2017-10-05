@@ -1,5 +1,7 @@
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('./data.db');
+const Student = require('./student.js');
+const Subject_Student = require('./subject_student.js');
 
 class Subject {
   constructor(raw) {
@@ -9,17 +11,15 @@ class Subject {
   }
 
   static findAll() { //must to have
-    var promise = new Promise((resolve, reject)=>{
-      db.all('select * from Subject', (err, rows)=>{
-        if(err){
+    var promise = new Promise((resolve, reject) => {
+      db.all('select * from Subject', (err, rows) => {
+        if (err) {
           reject(err);
-        }
-        else{
-          if(rows !== undefined) {
-            let results = models.map(m => new Subject(m))
+        } else {
+          if (rows !== undefined) {
+            let results = rows.map(m => new Subject(m))
             resolve(results);
-          }
-          else{
+          } else {
             resolve(rows);
           }
         }
@@ -29,48 +29,47 @@ class Subject {
   }
 
   static findById(id) {
-    db.get('select * from Subject where id="'+id+'"', (err, rows)=>{
-      if(err){
-        reject(err);
-      }
-      else{
-        if(rows !== undefined) {
-          let results = new Subject(rows);
-          resolve(results);
+    var promise = new Promise((resolve, reject) => {
+      db.get('select * from Subject where id="' + id + '"', (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          if (rows !== undefined) {
+            let results = new Subject(rows);
+            resolve(results);
+          } else {
+            resolve(rows);
+          }
         }
-        else{
-          resolve(rows);
-        }
-      }
+      })
     })
     return promise
   } //must to have
 
   static findWhere(id, column) {
-    db.all(`select * from Subject where ${column}='${id}'`, (err, rows)=>{
-      if(err){
-        reject(err);
-      }
-      else{
-        if(rows !== undefined) {
-          let results = models.map(m => new Subject(m))
-          resolve(results);
+    var promise = new Promise((resolve, reject)=>{
+      db.all(`select * from Subject where ${column}='${id}'`, (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          if (rows !== undefined) {
+            let results = rows.map(m => new Subject(m))
+            resolve(results);
+          } else {
+            resolve(rows);
+          }
         }
-        else{
-          resolve(rows);
-        }
-      }
+      })
     })
     return promise
   } //nice to have
 
   static create(data) {
-    var promise = new Promise((resolve, reject)=>{
-      db.run(`insert into Subject values(null, '${data.subject_name}', '${data.subject_code}')`, (err)=>{
-        if(err) {
+    var promise = new Promise((resolve, reject) => {
+      db.run(`insert into Subject values(null, '${data.subject_name}', '${data.subject_code}')`, (err) => {
+        if (err) {
           reject(err);
-        }
-        else{
+        } else {
           resolve(this.id);
         }
       })
@@ -79,12 +78,11 @@ class Subject {
   } //must to have
 
   static update(data) {
-    var promise = new Promise((resolve, reject)=>{
-      db.run(`update Subject set subject_name ='${data.subject_name}', subject_code='${data.subject_code}' where id='${data.id}'`, (err)=>{
-        if(err){
+    var promise = new Promise((resolve, reject) => {
+      db.run(`update Subject set subject_name ='${data.subject_name}', subject_code='${data.subject_code}' where id='${data.id}'`, (err) => {
+        if (err) {
           reject(err);
-        }
-        else{
+        } else {
           resolve();
         }
       })
@@ -93,19 +91,41 @@ class Subject {
   } //must to have
 
   static destroy(id) {
-    var promise = new Promise((resolve, reject)=>{
-      db.run(`delete from Subject where id='${id}'`, (err)=>{
-        if(err){
+    var promise = new Promise((resolve, reject) => {
+      db.run(`delete from Subject where id='${id}'`, (err) => {
+        if (err) {
           reject(err);
-        }
-        else{
+        } else {
           resolve(err);
         }
       })
     })
     return promise;
   } //must to have
+  static generateSubjectTable() {
+    var promise = new Promise((resolve, reject)=>{
+      Subject.findAll().then((rows)=>{
+        var arr_prom = [];
+        rows.forEach((row)=>{
+          arr_prom.push(Subject.getAllStudent(row));
+        })
+        Promise.all(arr_prom).then((results)=>{
 
+        })
+      })
+    })
+    return promise;
+  }
+  static getAllStudent(subject) {
+    Subject_Student.findWhere(subject.id, 'Subject_ID').then((rows)=>{
+      var allStudent = rows.map((row)=>{return row.subject_id});
+      allStudent.forEach((student)=>{
+        Student.findById(student).then((data)=>{
+          console.log(data);
+        })
+      })
+    })
+  }
 }
 
 module.exports = Subject;

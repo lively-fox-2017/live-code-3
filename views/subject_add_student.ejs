@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Student to Subject</title>
+  </head>
+  <body>
+    <form action="/subject/add_student/<%= subject_id %>" method="post">
+      Student Name<select name="student_id">
+        <% for(var i = 0;i <dataRows.length; i++){
+
+        %>
+        <option value="<%= dataRows[i].id %>"><%= dataRows[i].fullName() %></option>
+        <%
+        }
+        %>
+      </select><br>
+      Score <input type="text" name="score" placeholder="Score">
+      <br>
+      <input type="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

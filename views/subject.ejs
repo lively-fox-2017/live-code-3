@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Subject Data</title>
+  </head>
+  <body>
+    <a href="/">Back</a>
+    <h2><%= message %></h2>
+    <table border='5'>
+      <tr>
+        <td>ID</td>
+        <td>Subject Name</td>
+        <td>Subject Code</td>
+        <td>List Student</td>
+        <td colspan='3'>Action</td>
+      </tr>
+      <%
+        for(var i = 0;i<dataRows.length;i++) {
+          %>
+          <tr>
+            <td><%= dataRows[i].id %></td>
+            <td><%= dataRows[i].subject_name %></td>
+            <td><%= dataRows[i].subject_code %></td>
+            <td><%= dataRows[i].student %></td>
+            <td><a href="/subject/update/<%= dataRows[i].id %>">Edit</a></td>
+            <td><a href="/subject/delete/<%= dataRows[i].id %>">Delete</a></td>
+            <td><a href="/subject/add_student/<%= dataRows[i].id %>">Add Student</a></td>
+          </tr>
+          <%
+        }
+      %>
+    </table>
+    <a href="/subject/add">Add New Data</a>
+  </body>
+</html>

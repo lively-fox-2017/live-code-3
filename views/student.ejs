@@ -5,6 +5,8 @@
     <title>Student Data</title>
   </head>
   <body>
+    <a href="/">Back</a>
+    <h2><%= message %></h2>
     <table border='5'>
       <tr>
         <td>ID</td>
@@ -23,12 +25,13 @@
             <td><%= dataRows[i].last_name %></td>
             <td><%= dataRows[i].email %></td>
             <td><%= dataRows[i].gender %></td>
-            <td><a href="/update/<%= dataRows[i].id %>">Edit</a></td>
-            <td><a href="/delete/<%= dataRows[i].id %>">Delete</a></td>
+            <td><a href="/student/update/<%= dataRows[i].id %>">Edit</a></td>
+            <td><a href="/student/delete/<%= dataRows[i].id %>">Delete</a></td>
           </tr>
           <%
         }
       %>
     </table>
+    <a href="/student/add">Add New Data</a>
   </body>
 </html>
